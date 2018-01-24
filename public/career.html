@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>八斗猫官网</title>
+    <link href="css/css.css" rel="stylesheet">
+    <link href="css/career.css" rel="stylesheet">
+    <link href="css/select.css" rel="stylesheet">
+</head>
+<body>
+    <div class="nav">
+        <div class="navbar">
+            <img class="nav_logo" src="img/index_nav_logo@2x.png" alt="">
+            <ul class="nav_list">
+                <li><a href="javascript:void(0)">首页</a></li>
+                <li><a class="active" href="javascript:void(0)">成为职业顾问</a></li>
+                <li><a href="javascript:void(0)">FAQ</a></li>
+                <li><a href="javascript:void(0)" onclick="openLogin()">登录/注册</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="career_material">
+        <p>您的资料暂未提交</p>
+        <div class="material_data">
+            <span class="active">
+                填写职业资料
+            </span>
+            <span>
+                添加服务内容
+            </span>
+            <div class="material_div">
+                <form name="formData" method="post">
+                    <div class="avatar_img" onclick="openAvatar()">
+                        <img src="img/career/de_head_icon_normal@2x.png" alt="">
+                        <img src="img/career/de_headphoto_icon_hover@2x.png" alt="">
+                    </div>
+                    <lable class="mb30">
+                        <span class="require">真实姓名</span>
+                        <input type="text">
+                    </lable>
+                    <lable class="mb30">
+                        <span class="require">工作地区</span>
+                        <input type="text">
+                    </lable>
+                    <lable class="mb30">
+                        <span class="require">擅长行业</span>
+                        <div class="select">
+                            <!--存放选择的值-->
+                            <span class="selectVal" onselectstart="return false"  >-请选择-</span>
+                            <!--放置icon-->
+                            <i class="xl-icon"></i>
+                            <!--选择项-->
+                            <div class="selectList">
+                                <div class="listA-all">
+                                    <a href="javascript:;" class="listA">选择项1</a>
+                                    <a href="javascript:;" class="listA">选择项2</a>
+                                    <a href="javascript:;" class="listA">选择项3</a>
+                                    <a href="javascript:;" class="listA">选择项4</a>
+                                    <a href="javascript:;" class="listA">选择项5</a>
+                                </div>
+                            </div>
+                        </div>
+                    </lable>
+                    <lable class="mb30">
+                        <span class="require">任职公司</span>
+                        <input type="text">
+                    </lable>
+                    <lable class="mb50">
+                        <span class="require">头衔/职位</span>
+                        <input type="text">
+                    </lable>
+                    <lable class="mb40">
+                        <span class="require">工作经历</span>
+                        <span class="add_span">添加</span>
+                        <div class="add_content">
+                            <div class="work_div">
+                                <span class="work_company">八斗猫（北京）人工智能技术有限公司</span>
+                                <span class="work_date">2018.01—2018.02</span>
+                                <div class="work_position">资深猎头顾问</div>
+                                <p class="work_intro">简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等</p>
+                            </div>
+                        </div>
+                        <!--<div class="addWork">-->
+                            <!--<span>公司</span>-->
+                            <!--<span class="ml48">职位</span>-->
+                            <!--<input type="text" placeholder="公司">-->
+                            <!--<input class="ml48" type="text" placeholder="职位">-->
+                            <!--<span>开始时间</span>-->
+                            <!--<span class="ml48">结束时间</span>-->
+                            <!--<input type="text">-->
+                            <!--<input class="ml48" type="text">-->
+                            <!--<span>工作描述</span>-->
+                            <!--<textarea name="" id="" cols="30" rows="10" placeholder="简单描述您在岗职位的工作内容或职责范围等"></textarea>-->
+                            <!--<div style="text-align: center">-->
+                                <!--<a class="btn_a" href="javascript:void(0)">取消</a>-->
+                                <!--<a class="btn_a" href="javascript:void(0)">保存</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    </lable>
+                    <lable class="mb40">
+                        <span class="require">教育经历</span>
+                        <span class="add_span">添加</span>
+                        <div class="add_content">
+                            <div class="work_div">
+                                <span class="work_company">八斗猫（北京）人工智能技术有限公司</span>
+                                <span class="work_date">2018.01—2018.02</span>
+                                <div class="work_position">资深猎头顾问</div>
+                                <p class="work_intro">简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等</p>
+                            </div>
+                        </div>
+                        <!--<div class="addWork">-->
+                            <!--<span>学校</span>-->
+                            <!--<span class="ml48">专业</span>-->
+                            <!--<input type="text" placeholder="学校">-->
+                            <!--<input class="ml48" type="text" placeholder="专业">-->
+                            <!--<span>学历</span><br>-->
+                            <!--<input type="text" placeholder="学历"><br>-->
+                            <!--<span>在校开始时间</span>-->
+                            <!--<span class="ml48">在校结束时间</span>-->
+                            <!--<input type="text">-->
+                            <!--<input class="ml48" type="text">-->
+                            <!--<span>教育经历描述</span>-->
+                            <!--<textarea name="" id="" cols="30" rows="10" placeholder="请填写在校期间参与的活动及获得的荣誉"></textarea>-->
+                            <!--<div style="text-align: center">-->
+                                <!--<a class="btn_a" href="javascript:void(0)">取消</a>-->
+                                <!--<a class="btn_a" href="javascript:void(0)">保存</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    </lable>
+                    <lable class="mb40">
+                        <span class="require">自我介绍</span>
+                        <span class="add_span">添加</span>
+                        <div class="add_content">
+                            <p class="work_intro ml20">简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等</p>
+                        </div>
+                        <!--<div class="addWork">-->
+                            <!--<textarea maxlength="200" name="" id="" cols="30" rows="10" placeholder="请填写在校期间参与的活动及获得的荣誉"></textarea>-->
+                            <!--<span class="limitStr">0/200</span>-->
+                            <!--<div style="text-align: center">-->
+                                <!--<a class="btn_a mt11" href="javascript:void(0)">取消</a>-->
+                                <!--<a class="btn_a mt11" href="javascript:void(0)">保存</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    </lable>
+                    <lable class="pb40">
+                        <span class="require" style="width: 230px">上传职业证明资料</span>
+                        <div class="img_array">
+                            <span></span>
+                        </div>
+                    </lable>
+                    <!--<a href="javascript:void(0)">下一步</a>-->
+                </form>
+            </div>
+            <div class="add_service_div">
+                服务内容
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="footer">
+        <div class="footer_top">
+            <img src="img/index_fot_logo@2x.png" alt="">
+            <div>
+                <img src="img/index_fot_phone@2x.png" alt="">
+                400-667-9596
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <div>
+                <div>公司地址：北京市 朝阳区 望京soho T1-B-1807 室</div>
+                <div>商务合作：business@bdm.ai</div>
+                <div>市场合作：market@bdm.ai</div>
+                <div>人才招聘：hr@bdm.ai</div>
+            </div>
+            <div>
+                <img src="img/index_fot_QR@2x.png" alt="">
+                <p>扫码关注公众号</p>
+            </div>
+        </div>
+    </div>
+    <p>Copyright © 2018 , All Rights Reserved</p>
+    <div class="dialogLogin" onclick="closeLogin(this)">
+        <div>
+            <span>欢迎登录八斗猫</span>
+            <form action="">
+                <div>
+                    <img src="img/index_icon_phone_normal@2x.png" alt="">
+                    <input class="form_phone" placeholder="请输入手机号" type="text">
+                    <span>+86</span>
+                </div>
+                <div>
+                    <img src="img/index_icon_safe_normal@2x.png" alt="">
+                    <input class="form_safe" placeholder="请输入验证码" type="text">
+                    <div class="form_safe_num">发送验证码</div>
+                </div>
+                <span>请输入有效手机号</span>
+                <a href="javascript:void(0)">登录</a>
+            </form>
+        </div>
+    </div>
+    <div class="dialogUpload" onclick="closeAvatar(this)">
+        <div>
+            <div class="avatar_upload">
+                <!--<a href="javascript:;" class="avatar_upload1">+ 添加照片-->
+                    <!--<input type="file" name="" id="">-->
+                <!--</a>-->
+                <div class="avatar_div">
+                    <img src="img/index_fot_QR@2x.png" alt="">
+                    <div></div>
+                </div>
+            </div>
+            <p>头像支持jpg，png，gif格式图片，请尽可能选用160*160以上照片</p>
+            <div class="btn_div">
+                <a href="javascript:;" class="avatar_upload2">更换图片
+                    <input type="file" name="" id="">
+                </a>
+                <a class="btn_a" href="" onclick="closeAvatar()">取消</a>
+                <a class="btn_a" href="">保存</a>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+<script type="text/javascript" src="js/dropDown.js"></script>
+</html>
