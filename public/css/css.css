@@ -259,6 +259,7 @@ div.footer_bottom>div{
     width: 50%;
     box-sizing: border-box;
     display: inline-block;
+    vertical-align: top;
 }
 div.footer_bottom>div:first-child{
     border-right: 1px solid rgba(255,255,255,.2);

@@ -63,9 +63,6 @@ div.material_data>div{
     color:rgba(51,51,51,1);
     padding-bottom: 30px;
 }
-div.add_service_div{
-    display: none;
-}
 div.material_div,div.add_service_div{
     text-align: center;
 }
@@ -111,6 +108,10 @@ div.material_data lable>span{
     font-size: 24px;
     line-height: 40px;
 }
+div.material_data lable.lable_27>span{
+    height: 27px;
+    line-height: 27px;
+}
 div.material_data lable>input,div.material_data lable>select{
     width: 440px;
     height: 40px;
@@ -136,6 +137,9 @@ div.material_data lable>span.require:before{
     font-size: 20px;
     color: #FF551B;
 }
+div.material_data lable.lable_27>span.require{
+    width: 300px;
+}
 div.material_data lable>span.add_span{
     font-size:20px;
     font-family:FZLTZHUNHK--GBK1-0;
@@ -144,6 +148,9 @@ div.material_data lable>span.add_span{
     position: absolute;
     left: 787px;
     top: 3px;
+}
+div.material_data lable.lable_27>span.add_span{
+    line-height:27px;
 }
 div.material_data lable>span.add_span:before{
     display: inline-block;
@@ -158,6 +165,10 @@ div.material_data lable>span.add_span:before{
     font-weight: 100;
     margin-right: 8px;
     vertical-align: middle;
+}
+div.material_data lable.lable_27>span.add_span:before{
+    vertical-align: top;
+    margin-top: 3px;
 }
 div.material_data lable>span.add_span:hover{
     color:rgba(0,182,241,1);
@@ -195,6 +206,7 @@ div.addWork>textarea{
     padding: 19px;
     font-size: 18px;
     color:rgba(51,51,51,1);
+    line-height: 28px;
 }
 .btn_a{
     display: inline-block;
@@ -507,8 +519,39 @@ a.nextBtn{
     font-family:FZLTZHUNHK--GBK1-0;
     color:rgba(255,255,255,1);
 }
+.sevice_content{
+    text-align: center;
+}
+.sevice_content>span{
+    display: inline-block;
+    width: 230px;
+    font-size:24px;
+    font-family:FZLTZHUNHK--GBK1-0;
+    color:rgba(216,216,216,1);
+    line-height: 80px;
+    margin: 0 20px 18px 20px;
+    border-radius: 3px;
+    border: 1px solid #D8D8D8;
+}
+.sevice_content>span.active{
+    border: 1px solid #00B6F1;
+    color:rgba(0,182,241,1);
+}
 
 
+
+
+
+
+
+.material_div{
+    display: none;
+}
+
+.add_service_div{
+    padding-top: 72px;
+    /*display: none;*/
+}
 
 
 
