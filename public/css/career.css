@@ -113,7 +113,7 @@ div.material_data lable.lable_27>span{
     line-height: 27px;
 }
 div.material_data lable>input,div.material_data lable>select{
-    width: 440px;
+    width: 380px;
     height: 40px;
     border: 1px solid #D8D8D8;
     border-radius: 4px;
@@ -136,6 +136,40 @@ div.material_data lable>span.require:before{
     display: inline-block;
     font-size: 20px;
     color: #FF551B;
+}
+div.material_data lable>span.correct{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 10px;
+    left: 814px;
+    display: inline-block;
+    background: url("../img/career/up_icon_right@2x.png") center/cover no-repeat;
+}
+div.material_data lable>span.correct{
+    height: 20px;
+    position: absolute;
+    top: 10px;
+    left: 814px;
+    display: inline-block;
+    background: url("../img/career/up_icon_right@2x.png") 0 center/cover no-repeat;
+}
+div.material_data lable>span.error{
+    width: 300px;
+    height: 20px;
+    position: absolute;
+    top: 10px;
+    left: 814px;
+    display: inline-block;
+    background: url("../img/career/up_icon_error@2x.png") 0 center/20px 20px no-repeat;
+    padding-left: 28px;
+    font-size:16px;
+    font-family:FZLTHJW--GB1-0;
+    color:rgba(255,85,27,1);
+    line-height: 20px;
+}
+.redError{
+    border: 1px solid #FF551B!important;
 }
 div.material_data lable.lable_27>span.require{
     width: 300px;
@@ -239,12 +273,11 @@ div.addWork>span.limitStr{
     margin-top: 11px;
 }
 div.material_data lable>div.select{
-    width: 440px;
+    width: 380px;
     height: 40px;
-    border: 1px solid #D8D8D8;
     border-radius: 4px;
     box-sizing: border-box;
-    padding: 0 0 0 19px;
+    padding: 0;
     font-size: 18px;
     font-family: FZLTZHUNHK--GBK1-0;
     color: rgba(51,51,51,1);
@@ -252,8 +285,29 @@ div.material_data lable>div.select{
     display: inline-block;
     line-height: 40px;
 }
-div.material_data lable>div.select.active{
+
+div.material_data lable>div.select input{
+    width: 380px;
+    height: 40px;
+    border: 1px solid #D8D8D8;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 0 0 0 19px;
+    font-size: 18px;
+    font-family: FZLTZHUNHK--GBK1-0;
+    background: white;
+    display: inline-block;
+    line-height: 40px;
+}
+div.material_data lable>div.select input:focus+div.selectList{
+    display: none;
+}
+div.material_data lable>div.select input:focus{
     border: 1px solid #00B6F1;
+    border-radius: 4px 4px 0 0;
+}
+div.material_data lable>div.select input:focus+div.selectList{
+    display: block;
 }
 div.dialogUpload{
     width:100vw;
@@ -538,6 +592,148 @@ a.nextBtn{
     color:rgba(0,182,241,1);
 }
 
+.add_service_div .sevice_select{
+    width: 500px;
+    line-height: 48px;
+    border: 1px solid #D8D8D8;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 0 0 0 19px;
+    font-size: 18px;
+    font-family: FZLTZHUNHK--GBK1-0;
+    color: rgba(51,51,51,1);
+    background: white;
+    display: inline-block;
+    margin: auto;
+}
+.sevice_select_div{
+    text-align: center;
+    padding-top: 28px;
+}
+.add_service_div .sevice_select.active{
+    border: 1px solid #00B6F1;
+}
+.sevice_select .selectList{
+    width: 500px;
+    top: 43px;
+}
+.sevice_count{
+    width: 500px;
+    height: 48px;
+    line-height: 48px;
+    font-size:24px;
+    font-family:FZLTZHUNHK--GBK1-0;
+    color:rgba(51,51,51,1);
+    border: 1px solid #D8D8D8;
+    margin: auto;
+    text-align: center;
+    border-radius: 4px;
+    margin-top: 28px;
+}
+#service_price,#service_date{
+    width:400px;
+    height:62px;
+    text-align: center;
+    font-size:24px;
+    font-family:FZLTZHUNHK--GBK1-0;
+    color:rgba(51,51,51,1);
+}
+.price_span{
+    position: relative;
+    display: inline-block;
+    padding-top: 0!important;
+}
+.date_span{
+    display: inline-block;
+    padding-top: 0!important;
+}
+.price_span:before{
+    content: "元";
+    position: absolute;
+    right: 120px;
+    top: 0;
+    line-height: 62px;
+    font-size: 20px;
+}
+.lable_w138>span.require{
+    width: 138px!important;
+}
+p.price_warn{
+    font-size:14px;
+    font-family:FZLTZHUNHK--GBK1-0;
+    color:rgba(216,216,216,1);
+    line-height:22px;
+    margin-top: 21px;
+}
+div.add_service_content{
+    width: 588px;
+    height: 110px;
+    border-radius: 4px;
+    font-size:20px;
+    font-family:FZLTZHUNHK--GBK1-0;
+    color:rgba(216,216,216,1);
+    line-height: 110px;
+    border: 1px dashed #D8D8D8;
+    margin-left: 266px;
+    text-align: center;
+}
+a.redBtn{
+    background:rgba(255,85,27,1);
+}
+a.submit_btn{
+    margin: 0 30px;
+}
+.money_icon{
+    width: 18px;
+    height: 18px;
+}
+.time_icon{
+    width: 16px;
+    height: 16px;
+}
+div.service_content>div{
+    height: 27px;
+    margin-bottom: 20px;
+}
+div.service_content>div:before{
+    display: inline-block;
+    content: "";
+    width:16px;
+    height:16px;
+    background:rgba(255,255,255,1);
+    border: 1px solid #00B6F1;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+div.service_content>div>*{
+    display: inline-block;
+}
+div.service_content>div>span{
+    font-size:24px;
+    font-family:FZLTZHUNHK--GBK1-0;
+    color:rgba(189,189,189,1);
+    line-height:22px;
+}
+div.service_content>div>span:first-child{
+    width: 170px;
+}
+div.service_content>div>span:nth-child(2){
+    width: 175px;
+    padding-left: 67px;
+    box-sizing: border-box;
+    border-left: 1px solid #D8D8D8;
+    border-right: 1px solid #D8D8D8;
+    background: url("../img/career/money_icon@2x.png") 39px center/18px 18px no-repeat;
+}
+div.service_content>div>span:nth-child(3){
+    padding-left: 65px;
+    background: url("../img/career/time_icon@2x.png") 34px center/16px 16px no-repeat;
+}
+
+
+
+
+
 
 
 
@@ -545,15 +741,20 @@ a.nextBtn{
 
 
 .material_div{
-    display: none;
+    /*display: none;*/
 }
 
 .add_service_div{
     padding-top: 72px;
-    /*display: none;*/
+    display: none;
 }
 
-
+div.material_data lable>span.correct{
+    display: none;!important;
+}
+div.material_data lable>span.error{
+    display: none;!important;
+}
 
 
 
@@ -580,4 +781,7 @@ a.nextBtn{
 }
 .pb30{
     padding-bottom: 30px;
+}
+.mb48{
+    margin-bottom: 48px;
 }

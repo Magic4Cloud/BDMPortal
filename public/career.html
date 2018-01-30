@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>八斗猫官网</title>
     <link href="css/css.css" rel="stylesheet">
-    <link href="css/career.css" rel="stylesheet">
     <link href="css/select.css" rel="stylesheet">
+    <link href="css/career.css" rel="stylesheet">
 </head>
 <body>
     <div class="nav">
@@ -36,38 +36,84 @@
                     </div>
                     <lable class="mb30">
                         <span class="require">真实姓名</span>
-                        <input type="text">
+                        <input type="text" onblur="testName(this)">
+                        <span class="correct"></span>
+                        <span class="error">请选择您的工作地区</span>
                     </lable>
                     <lable class="mb30">
                         <span class="require">工作地区</span>
-                        <input type="text">
-                    </lable>
-                    <lable class="mb30">
-                        <span class="require">擅长行业</span>
                         <div class="select">
                             <!--存放选择的值-->
-                            <span class="selectVal" onselectstart="return false"  >-请选择-</span>
+                            <input class="selectVal" placeholder="请选择省份" type="text" readonly>
                             <!--放置icon-->
                             <i class="xl-icon"></i>
                             <!--选择项-->
                             <div class="selectList">
                                 <div class="listA-all">
-                                    <a href="javascript:;" class="listA">选择项1</a>
-                                    <a href="javascript:;" class="listA">选择项2</a>
-                                    <a href="javascript:;" class="listA">选择项3</a>
-                                    <a href="javascript:;" class="listA">选择项4</a>
-                                    <a href="javascript:;" class="listA">选择项5</a>
+                                    <a href="javascript:;" class="listA" data-value="1">选择项1</a>
+                                    <a href="javascript:;" class="listA" data-value="2">选择项2</a>
+                                    <a href="javascript:;" class="listA" data-value="3">选择项3</a>
+                                    <a href="javascript:;" class="listA" data-value="4">选择项4</a>
+                                    <a href="javascript:;" class="listA" data-value="5">选择项5</a>
                                 </div>
                             </div>
                         </div>
+                        <span class="correct"></span>
+                        <span class="error">请选择您的工作地区</span>
+                    </lable>
+                    <lable class="mb30">
+                        <span class="require" style="opacity:0;"></span>
+                        <div class="select">
+                            <!--存放选择的值-->
+                            <input class="selectVal" placeholder="请选择城市" type="text" readonly>
+                            <!--放置icon-->
+                            <i class="xl-icon"></i>
+                            <!--选择项-->
+                            <div class="selectList">
+                                <div class="listA-all">
+                                    <a href="javascript:;" class="listA" data-value="1">选择项1</a>
+                                    <a href="javascript:;" class="listA" data-value="2">选择项2</a>
+                                    <a href="javascript:;" class="listA" data-value="3">选择项3</a>
+                                    <a href="javascript:;" class="listA" data-value="4">选择项4</a>
+                                    <a href="javascript:;" class="listA" data-value="5">选择项5</a>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="correct"></span>
+                        <span class="error">请选择您的工作地区</span>
+                    </lable>
+                    <lable class="mb30">
+                        <span class="require">擅长行业</span>
+                        <div class="select">
+                            <!--存放选择的值-->
+                            <input class="selectVal" placeholder="请选择擅长行业" type="text" readonly>
+                            <!--放置icon-->
+                            <i class="xl-icon"></i>
+                            <!--选择项-->
+                            <div class="selectList">
+                                <div class="listA-all">
+                                    <a href="javascript:;" class="listA" data-value="1">选择项1</a>
+                                    <a href="javascript:;" class="listA" data-value="2">选择项2</a>
+                                    <a href="javascript:;" class="listA" data-value="3">选择项3</a>
+                                    <a href="javascript:;" class="listA" data-value="4">选择项4</a>
+                                    <a href="javascript:;" class="listA" data-value="5">选择项5</a>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="correct"></span>
+                        <span class="error">请选择您的工作地区</span>
                     </lable>
                     <lable class="mb30">
                         <span class="require">任职公司</span>
                         <input type="text">
+                        <span class="correct"></span>
+                        <span class="error">请选择您的工作地区</span>
                     </lable>
                     <lable class="mb50">
                         <span class="require">头衔/职位</span>
                         <input type="text">
+                        <span class="correct"></span>
+                        <span class="error">请选择您的工作地区</span>
                     </lable>
                     <lable class="mb40 lable_27">
                         <span class="require">工作经历</span>
@@ -208,19 +254,70 @@
             </div>
             <div class="add_service_div">
                 <form name="" method="post">
-
-                    <lable class="mb50 lable_27">
-                        <span class="require">服务内容描述 <span style="font-size: 20px">（20-1000字）</span></span>
-                        <span class="add_span">添加</span>
-                        <!--<div class="add_content">-->
-                        <!--<p class="work_intro ml20">简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等</p>-->
+                    <!--<lable class="mb48 lable_27">-->
+                        <!--<span class="require">服务内容描述 <span style="font-size: 20px">（20-1000字）</span></span>-->
+                        <!--<span class="add_span">添加</span>-->
+                        <!--<div class="addWork">-->
+                            <!--<div class="sevice_content">-->
+                                <!--<span class="active">推荐工作</span>-->
+                                <!--<span>求职咨询</span>-->
+                                <!--<span>简历优化</span>-->
+                                <!--<span>简历翻译</span>-->
+                            <!--</div>-->
+                            <!--&lt;!&ndash;<div class="sevice_select_div">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="select sevice_select">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;&lt;!&ndash;存放选择的值&ndash;&gt;&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<span class="selectVal" onselectstart="return false"  >-请选择-</span>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;&lt;!&ndash;放置icon&ndash;&gt;&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<i class="xl-icon"></i>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;&lt;!&ndash;选择项&ndash;&gt;&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="selectList">&ndash;&gt;-->
+                                        <!--&lt;!&ndash;<div class="listA-all">&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<a href="javascript:;" class="listA">0.5小时</a>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<a href="javascript:;" class="listA">1小时</a>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<a href="javascript:;" class="listA">1.5小时</a>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<a href="javascript:;" class="listA">2小时</a>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                            <!--<div class="sevice_count">1   次</div>-->
                         <!--</div>-->
-                        <div class="addWork">
-                            <div class="sevice_content">
-                                <span class="active">推荐工作</span>
-                                <span>求职咨询</span>
-                                <span>简历优化</span>
-                                <span>简历翻译</span>
+                    <!--</lable>-->
+                    <!--<lable class="mb40 lable_27 lable_w138">-->
+                        <!--<span class="require">服务价格</span>-->
+                        <!--<span class="add_span">添加</span>-->
+                        <!--<div class="price_span">-->
+                            <!--<input id="service_price" type="text">-->
+                        <!--</div>-->
+                        <!--<p class="price_warn">·  价格不代表资历及水平，而是用户用来向专业服务表达的认可。<br>-->
+                            <!--·  八斗猫猎头服务均价约为500元，建议您将价格设定在300-1500元区间，更容易被预约。</p>-->
+                    <!--</lable>-->
+                    <!--<lable class="mb50 lable_27 lable_w138">-->
+                        <!--<span class="require">完成时间</span>-->
+                        <!--<span class="add_span">添加</span>-->
+                        <!--<div class="date_span">-->
+                            <!--<input id="service_date" type="text">-->
+                        <!--</div>-->
+                        <!--<p class="price_warn">·  该项服务正常情况下需要完成的时间，例如如2-4个工作日，1-3个月，或双方协商等</p>-->
+                        <!--<div style="text-align: center">-->
+                            <!--<a class="btn_a mt11" href="javascript:void(0)">取消</a>-->
+                            <!--<a class="btn_a mt11" href="javascript:void(0)">保存</a>-->
+                        <!--</div>-->
+                    <!--</lable>-->
+                    <lable class="mb50 lable_27">
+                        <span class="require">服务内容</span>
+                        <span class="add_span">添加</span>
+                        <div class="service_content">
+                            <div>
+                                <span>推荐工作/次</span>
+                                <span>1500</span>
+                                <span>2-4天</span>
+                            </div>
+                            <div>
+                                <span>推荐工作/次</span>
+                                <span>1500</span>
+                                <span>2-4天</span>
                             </div>
                         </div>
                     </lable>
@@ -284,7 +381,10 @@
                             </div>
                         </div>
                     </lable>
-                    <div class="noun" style="padding-top: 0;padding-bottom: 46px;">
+                    <div class="add_service_content">
+                        + 继续添加服务内容
+                    </div>
+                    <div class="noun" style="padding-top: 0;padding-bottom: 46px; margin-top: 50px;">
                             <span>
                                 <input type="checkbox">
                             </span>
@@ -292,8 +392,8 @@
                                 本人承诺为以上信息的真实性及准确性负责，并会在任职信息变更时及时更新职业资料
                             </span>
                     </div>
-                    <a class="nextBtn" href="javascript:void(0)">下一步</a>
-                    <a class="nextBtn" href="javascript:void(0)">提交认证</a>
+                    <a class="nextBtn submit_btn" href="javascript:void(0)">下一步</a>
+                    <a class="nextBtn redBtn submit_btn" href="javascript:void(0)">提交认证</a>
                 </form>
             </div>
         </div>
@@ -370,4 +470,5 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/js.js"></script>
 <script type="text/javascript" src="js/dropDown.js"></script>
+<script type="text/javascript" src="js/career.js"></script>
 </html>
