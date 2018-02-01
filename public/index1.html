@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>jQuery</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-select.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="select_id">
+    <select id="id_select" class="selectpicker bs-select bla bla bli" multiple data-live-search="true" onblur="aaaa()">
+        <option value="111">张</option>
+        <option>里</option>
+        <option>张</option>
+        <option>张</option>
+        <option>张</option>
+        </optgroup>
+    </select>
+</div>
+<label for="id_select"></label>
+
+</div>
+</body>
+<script src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap-select.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+
+  $(window).on('load', function () {
+    // 判断擅长行业
+    $('.selectpicker').selectpicker({
+      'selectedText': 'cat'
+    });
+  });
+  $(function () {
+    $('#select_id').on('show.bs.select', function (e) {
+      console.log('show')
+    });
+    $('#select_id').on('shown.bs.select', function (e) {
+      console.log('shown')
+    });
+    $('#select_id').on('hide.bs.select', function (e) {
+      console.log('hide')
+    });
+    $('#select_id').on('hidden.bs.select', function (e) {
+      console.log('hidden')
+      console.log(e)
+    });
+    $('#id_select').on('hidden.bs.select', function (e) {
+      console.log('hidden???')
+      console.log(e)
+    });
+    $('#select_id').on('loaded.bs.select', function (e) {
+      console.log('loaded')
+    });
+    $('#select_id').on('rendered.bs.select', function (e) {
+      console.log('rendered')
+    });
+    $('#select_id').on('refreshed.bs.select', function (e) {
+      console.log('refreshed')
+    });
+    $('#select_id').on('changed.bs.select', function (e) {
+      console.log('changed')
+    });
+  })
+    function aaaa() {
+      console.log(111)
+    }
+</script>
+</html>

@@ -23,6 +23,7 @@ a {
     background: url(../img/down_icon@2x.png) center/cover;
     right: 25px;
     top: 15px;
+    opacity: 0;
 }
 .select:hover, .selectNext:hover {
     background-color: #f7f7f7;

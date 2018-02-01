@@ -1,10 +1,13 @@
 body{
-    background:rgba(246,246,246,1);
+    background:rgba(246,246,246,1)!important;
 }
 div.career_material{
     padding-top: 70px;
     width: 1100px;
     margin: auto;
+}
+input[type="checkbox"]:focus{
+    outline: none!important;
 }
 div.career_material>p{
     text-align: center;
@@ -182,6 +185,10 @@ div.material_data lable>span.add_span{
     position: absolute;
     left: 787px;
     top: 3px;
+    display: none;
+}
+div.material_data lable>div.add_content>div.work_div:first-child{
+    margin-top: 30px;
 }
 div.material_data lable.lable_27>span.add_span{
     line-height:27px;
@@ -419,7 +426,8 @@ div.avatar_div>div{
     top: 0;
     background: url("../img/career/shade@2x.png") center/cover;
 }
-div.add_content{
+div.material_data lable>div.add_content{
+    padding: 0;
 }
 div.work_div{
     width: 567px;
@@ -595,27 +603,50 @@ a.nextBtn{
 .add_service_div .sevice_select{
     width: 500px;
     line-height: 48px;
-    border: 1px solid #D8D8D8;
     border-radius: 4px;
     box-sizing: border-box;
-    padding: 0 0 0 19px;
-    font-size: 18px;
-    font-family: FZLTZHUNHK--GBK1-0;
-    color: rgba(51,51,51,1);
+    padding: 0;
     background: white;
     display: inline-block;
     margin: auto;
+}
+.sevice_select .xl-icon{
+    top: 17.5px;
 }
 .sevice_select_div{
     text-align: center;
     padding-top: 28px;
 }
-.add_service_div .sevice_select.active{
+.sevice_select_div{
+    display: none;
+}
+.sevice_select input{
+    width: 500px;
+    height: 48px;
+    border: 1px solid #D8D8D8;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 0;
+    font-size: 24px;
+    font-family: FZLTZHUNHK--GBK1-0;
+    color: rgba(51,51,51,1);
+    background: white;
+    display: inline-block;
+    margin: auto;
+    text-align: center;
+}
+.sevice_select input:focus{
     border: 1px solid #00B6F1;
+    border-radius: 4px 4px 0 0;
 }
 .sevice_select .selectList{
     width: 500px;
-    top: 43px;
+    top: 47px;
+}
+.sevice_select .listA{
+    font-size: 24px;
+    line-height: 48px;
+    height: 48px;
 }
 .sevice_count{
     width: 500px;
@@ -729,7 +760,18 @@ div.service_content>div>span:nth-child(3){
     padding-left: 65px;
     background: url("../img/career/time_icon@2x.png") 34px center/16px 16px no-repeat;
 }
-
+div.material_data lable input.redError{
+    border: 1px solid #FF551B;
+}
+div.material_data lable input.blueCorrect{
+    border: 1px solid #00B6F1!important;
+}
+div.material_data lable textarea.redError{
+    border: 1px solid #FF551B;
+}
+div.material_data lable textarea.blueCorrect{
+    border: 1px solid #00B6F1;
+}
 
 
 
@@ -741,12 +783,12 @@ div.service_content>div>span:nth-child(3){
 
 
 .material_div{
-    /*display: none;*/
+    display: none;
 }
 
 .add_service_div{
     padding-top: 72px;
-    display: none;
+    /*display: none;*/
 }
 
 div.material_data lable>span.correct{
@@ -784,4 +826,38 @@ div.material_data lable>span.error{
 }
 .mb48{
     margin-bottom: 48px;
+}
+.mt30{
+    margin-top: 30px;
+}
+.dialogError{
+    width: 400px;
+    border: 1px solid #FF551B;
+    position: fixed;
+    top: 200px;
+    left: calc(50% - 200px);
+    padding: 10px 30px 10px 10px;
+    border-radius: 5px;
+    background: white;
+    display: none;
+}
+.dialogError>p{
+    margin: 0;
+    font-family: FZLTHJW--GB1-0;
+    color: rgba(255,85,27,1);
+    line-height: 20px;
+}
+.dialogError>span{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url("../img/career/up_icon_error@2x.png") center/cover;
+    position: absolute;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(../img/career/up_icon_error@2x.png) center/cover;
+    position: absolute;
+    right: 5px;
+    top: 10px;
 }

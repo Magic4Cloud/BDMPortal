@@ -9,6 +9,9 @@ body{
 a:hover, a:visited, a:link, a:active {
 	text-decoration: none;
 }
+a:focus{
+    outline: none!important;
+}
 ul,li,p{
     margin: 0;
     padding: 0;
