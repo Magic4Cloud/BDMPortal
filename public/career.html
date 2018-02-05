@@ -225,32 +225,20 @@
             </div>
             <div id="add_service_div" class="add_service_div">
                 <form name="" method="post">
-                    <div>
-                        <lable class="mb50 lable_27">
+                    <div class="add_service_form_div">
+                        <lable class="mb50 lable_27 content_on_lable">
                             <span class="require">服务内容</span>
-                            <span class="add_span">添加</span>
-                            <div class="service_content">
-                                <div>
-                                    <span>推荐工作/次</span>
-                                    <span>1500</span>
-                                    <span>2-4天</span>
-                                </div>
-                                <div>
-                                    <span>推荐工作/次</span>
-                                    <span>1500</span>
-                                    <span>2-4天</span>
-                                </div>
-                            </div>
+                            <span class="add_span" onclick="editServiceContent(this)">添加</span>
+                            <div class="service_content sevice_onon" style="padding-top:0"></div>
                         </lable>
-                        <lable class="mb48 lable_27">
-                            <span class="require">服务内容描述 <span style="font-size: 20px">（20-1000字）</span></span>
-                            <span class="add_span">添加</span>
+                        <lable class="mb48 lable_27 content_lable">
+                            <span class="require">服务内容<span style="font-size: 20px">（20-1000字）</span></span>
                             <div class="addWork">
                                 <div class="sevice_content">
-                                    <span class="active" onclick="checkSeviceContent(this),1">推荐工作</span>
-                                    <span onclick="checkSeviceContent(this),2">求职咨询</span>
-                                    <span onclick="checkSeviceContent(this),3">简历优化</span>
-                                    <span onclick="checkSeviceContent(this),4">简历翻译</span>
+                                    <span class="active" onclick="checkSeviceContent(this)" data-value="1">推荐工作</span>
+                                    <span onclick="checkSeviceContent(this)" data-value="2">求职咨询</span>
+                                    <span onclick="checkSeviceContent(this)" data-value="3">简历优化</span>
+                                    <span onclick="checkSeviceContent(this)" data-value="4">简历翻译</span>
                                 </div>
                                 <div class="sevice_select_div">
                                     <div class="select sevice_select">
@@ -271,100 +259,90 @@
                         </lable>
                         <lable class="mb40 lable_27 lable_w138">
                             <span class="require">服务价格</span>
-                            <span class="add_span">添加</span>
                             <div class="price_span">
-                                <input id="service_price" type="text">
+                                <input class="service_price" type="text">
                             </div>
                             <p class="price_warn">·  价格不代表资历及水平，而是用户用来向专业服务表达的认可。<br>
                                 ·  八斗猫猎头服务均价约为500元，建议您将价格设定在300-1500元区间，更容易被预约。</p>
                         </lable>
                         <lable class="mb50 lable_27 lable_w138">
                             <span class="require">完成时间</span>
-                            <span class="add_span">添加</span>
                             <div class="date_span">
-                                <input id="service_date" type="text">
+                                <input class="service_date" type="text">
                             </div>
                             <p class="price_warn">·  该项服务正常情况下需要完成的时间，例如如2-4个工作日，1-3个月，或双方协商等</p>
                             <div style="text-align: center">
-                                <a class="btn_a mt11" href="javascript:void(0)">取消</a>
-                                <a class="btn_a mt11" href="javascript:void(0)">保存</a>
+                                <a class="btn_a mt11" href="javascript:void(0)" onclick="cancleService(this)">取消</a>
+                                <a class="btn_a mt11" href="javascript:void(0)" onclick="saveService(this)">保存</a>
                             </div>
                         </lable>
                         <lable class="mb50 lable_27">
                             <span class="require">服务内容描述 <span style="font-size: 20px">（20-1000字）</span></span>
-                            <span class="add_span">添加</span>
-                            <div class="add_content">
-                                <p class="work_intro ml20 mt30">简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等</p>
-                            </div>
+                            <span class="add_span" onclick="addContentVerb(this)">添加</span>
+                            <div class="add_content"></div>
                             <div class="addWork">
-                                <textarea maxlength="300" minlength="20" name="" id="" cols="30" rows="10" placeholder="描述清楚该服务内容具体包括什么内容，需要多久，如何完成，达到什么效果，以便求职者预约。"></textarea>
+                                <textarea class="contentTextarea" onkeyup="myContentVerb(this)" maxlength="1000" minlength="20" cols="30" rows="10" placeholder="描述清楚该服务内容具体包括什么内容，需要多久，如何完成，达到什么效果，以便求职者预约。"></textarea>
                                 <span class="limitStr">0/1000</span>
                                 <div style="text-align: center">
-                                    <a class="btn_a mt11" href="javascript:void(0)">取消</a>
-                                    <a class="btn_a mt11" href="javascript:void(0)">保存</a>
+                                    <a class="btn_a mt11" href="javascript:void(0)" onclick="cancleContentVerb(this)">取消</a>
+                                    <a class="btn_a mt11" href="javascript:void(0)" onclick="saveContentVerb(this)">保存</a>
                                 </div>
                             </div>
                         </lable>
                         <lable class="mb50 lable_27">
                             <span class="require">在招职位 <span style="font-size: 20px">（20-300字）</span></span>
-                            <span class="add_span">添加</span>
-                            <div class="add_content">
-                                <p class="work_intro ml20 mt30">简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等</p>
-                            </div>
+                            <span class="add_span" onclick="addRecruitPos(this)">添加</span>
+                            <div class="add_content"></div>
                             <div class="addWork">
-                                <textarea maxlength="300" minlength="20" name="" id="" cols="30" rows="10" placeholder="近期在招的职位，如某某公司的什么职位，工作地点，年薪等。"></textarea>
+                                <textarea class="positionTextarea" onkeyup="myRecruitPos(this)" maxlength="300" minlength="20" cols="30" rows="10" placeholder="近期在招的职位，如某某公司的什么职位，工作地点，年薪等。"></textarea>
                                 <span class="limitStr">0/300</span>
                                 <div style="text-align: center">
-                                    <a class="btn_a mt11" href="javascript:void(0)">取消</a>
-                                    <a class="btn_a mt11" href="javascript:void(0)">保存</a>
+                                    <a class="btn_a mt11" href="javascript:void(0)" onclick="cancleRecruitPos(this)">取消</a>
+                                    <a class="btn_a mt11" href="javascript:void(0)" onclick="saveRecruitPos(this)">保存</a>
                                 </div>
                             </div>
                         </lable>
                         <lable class="mb50 lable_27">
                             <span class="require">为什么选我 <span style="font-size: 20px">（20-500字）</span></span>
-                            <span class="add_span">添加</span>
-                            <!--<div class="add_content">-->
-                            <!--<p class="work_intro ml20 mt30">简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等</p>-->
-                            <!--</div>-->
+                            <span class="add_span" onclick="addWhyMe(this)">添加</span>
+                            <div class="add_content"></div>
                             <div class="addWork">
-                                <textarea maxlength="300" minlength="20" name="" id="" cols="30" rows="10" placeholder="近期在招的职位，如某某公司的什么职位，工作地点，年薪等。"></textarea>
-                                <span class="limitStr">0/300</span>
+                                <textarea class="whyMeTextarea" onkeyup="myWhyMe(this)" maxlength="500" minlength="20" name="" id="" cols="30" rows="10" placeholder="近期在招的职位，如某某公司的什么职位，工作地点，年薪等。"></textarea>
+                                <span class="limitStr">0/500</span>
                                 <div style="text-align: center">
-                                    <a class="btn_a mt11" href="javascript:void(0)">取消</a>
-                                    <a class="btn_a mt11" href="javascript:void(0)">保存</a>
+                                    <a class="btn_a mt11" href="javascript:void(0)" onclick="cancleWhyMe(this)">取消</a>
+                                    <a class="btn_a mt11" href="javascript:void(0)" onclick="saveWhyMe(this)">保存</a>
                                 </div>
                             </div>
                         </lable>
                         <lable class="mb50 lable_27">
                             <span>其他补充说明</span>
-                            <span class="add_span">添加</span>
-                            <!--<div class="add_content">-->
-                            <!--<p class="work_intro ml20 mt30">简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等</p>-->
-                            <!--</div>-->
+                            <span class="add_span" onclick="addAddRemark(this)">添加</span>
+                            <div class="add_content"></div>
                             <div class="addWork">
-                                <textarea maxlength="300" minlength="20" name="" id="" cols="30" rows="10" placeholder="描述清楚该服务内容具体包括什么内容，需要多久，如何完成，达到什么效果，以便求职者预约。"></textarea>
+                                <textarea class="addRemarkTextarea" onkeyup="myAddRemark(this)" maxlength="300" cols="30" rows="10" placeholder="描述清楚该服务内容具体包括什么内容，需要多久，如何完成，达到什么效果，以便求职者预约。"></textarea>
                                 <span class="limitStr">0/300</span>
                                 <div style="text-align: center">
-                                    <a class="btn_a mt11" href="javascript:void(0)">取消</a>
-                                    <a class="btn_a mt11" href="javascript:void(0)">保存</a>
+                                    <a class="btn_a mt11" href="javascript:void(0)" onclick="cancleAddRemark(this)">取消</a>
+                                    <a class="btn_a mt11" href="javascript:void(0)" onclick="saveAddRemark(this)">保存</a>
                                 </div>
                             </div>
                         </lable>
                     </div>
 
-                    <div class="add_service_content">
+                    <div class="add_service_content" onclick="addServiceDiv(this)">
                         + 继续添加服务内容
                     </div>
                     <div class="noun" style="padding-top: 0;padding-bottom: 46px; margin-top: 50px;">
                             <span>
-                                <input type="checkbox" checked>
+                                <input type="checkbox" checked id="checkbox2" onchange="checkboxChange2()">
                             </span>
                             <span>
                                 本人承诺为以上信息的真实性及准确性负责，并会在任职信息变更时及时更新职业资料
                             </span>
                     </div>
-                    <a class="nextBtn submit_btn" href="javascript:void(0)">返回上一步</a>
-                    <a class="nextBtn redBtn submit_btn" href="javascript:void(0)">提交认证</a>
+                    <a class="nextBtn submit_btn" href="javascript:void(0)" onclick="prevStep()">返回上一步</a>
+                    <a class="nextBtn redBtn submit_btn" href="javascript:void(0)" onclick="submitVerify()">提交认证</a>
                 </form>
             </div>
         </div>

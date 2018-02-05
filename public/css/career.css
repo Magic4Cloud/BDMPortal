@@ -661,7 +661,7 @@ a.nextBtn{
     border-radius: 4px;
     margin-top: 28px;
 }
-#service_price,#service_date{
+.service_price,.service_date{
     width:400px;
     height:62px;
     text-align: center;
@@ -707,6 +707,7 @@ div.add_service_content{
     border: 1px dashed #D8D8D8;
     margin-left: 266px;
     text-align: center;
+    cursor: pointer;
 }
 a.redBtn{
     background:rgba(255,85,27,1);
@@ -746,7 +747,8 @@ div.service_content>div>span{
     line-height:22px;
 }
 div.service_content>div>span:first-child{
-    width: 170px;
+    min-width: 170px;
+    padding-right: 20px;
 }
 div.service_content>div>span:nth-child(2){
     width: 175px;
@@ -772,7 +774,9 @@ div.material_data lable textarea.redError{
 div.material_data lable textarea.blueCorrect{
     border: 1px solid #00B6F1;
 }
-
+div.material_data lable button.blueCorrect{
+    border: 1px solid #00B6F1!important;
+}
 
 
 
@@ -783,12 +787,12 @@ div.material_data lable textarea.blueCorrect{
 
 
 .material_div{
-    display: none;
+    /*display: none;*/
 }
 
 .add_service_div{
     padding-top: 72px;
-    /*display: none;*/
+    display: none;
 }
 
 div.material_data lable>span.correct{
@@ -834,9 +838,9 @@ div.material_data lable>span.error{
     width: 400px;
     border: 1px solid #FF551B;
     position: fixed;
-    top: 200px;
+    top: 100px;
     left: calc(50% - 200px);
-    padding: 10px 30px 10px 10px;
+    padding: 20px 20px 20px 45px;
     border-radius: 5px;
     background: white;
     display: none;
@@ -846,6 +850,7 @@ div.material_data lable>span.error{
     font-family: FZLTHJW--GB1-0;
     color: rgba(255,85,27,1);
     line-height: 20px;
+    font-size: 18px;
 }
 .dialogError>span{
     display: inline-block;
@@ -858,6 +863,12 @@ div.material_data lable>span.error{
     height: 20px;
     background: url(../img/career/up_icon_error@2x.png) center/cover;
     position: absolute;
-    right: 5px;
-    top: 10px;
+    left: 15px;
+    top: 20px;
+}
+div.material_data lable.content_on_lable{
+    display: none;
+}
+div.sevice_on{
+    margin-top: 30px;
 }
