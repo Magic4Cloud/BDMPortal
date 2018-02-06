@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <title>八斗猫官网</title>
     <link href="css/css.css" rel="stylesheet">
-    <link href="css/career.css" rel="stylesheet">
     <link href="css/select.css" rel="stylesheet">
+    <link href="css/career.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-select.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="nav">
@@ -25,10 +27,10 @@
             <span class="active">
                 填写职业资料
             </span>
-            <span>
+            <span id="service_span">
                 添加服务内容
             </span>
-            <div class="material_div">
+            <div class="material_div" id="material_div">
                 <form name="formData" method="post">
                     <div class="avatar_img" onclick="openAvatar()">
                         <img src="img/career/de_head_icon_normal@2x.png" alt="">
@@ -36,123 +38,312 @@
                     </div>
                     <lable class="mb30">
                         <span class="require">真实姓名</span>
-                        <input type="text">
+                        <input type="text" onblur="testName()" id="realName">
+                        <span class="correct"></span>
+                        <span class="error">请填写真实姓名</span>
                     </lable>
                     <lable class="mb30">
                         <span class="require">工作地区</span>
-                        <input type="text">
-                    </lable>
-                    <lable class="mb30">
-                        <span class="require">擅长行业</span>
                         <div class="select">
-                            <!--存放选择的值-->
-                            <span class="selectVal" onselectstart="return false"  >-请选择-</span>
-                            <!--放置icon-->
-                            <i class="xl-icon"></i>
-                            <!--选择项-->
+                            <input class="selectVal" placeholder="请选择省份" type="text" readonly onblur="testWorkLocal(this, event)" id="atProvince">
+                            <!--<i class="xl-icon"></i>-->
                             <div class="selectList">
                                 <div class="listA-all">
-                                    <a href="javascript:;" class="listA">选择项1</a>
-                                    <a href="javascript:;" class="listA">选择项2</a>
-                                    <a href="javascript:;" class="listA">选择项3</a>
-                                    <a href="javascript:;" class="listA">选择项4</a>
-                                    <a href="javascript:;" class="listA">选择项5</a>
+                                    <a href="javascript:;" class="listA" data-value="1">选择项1</a>
+                                    <a href="javascript:;" class="listA" data-value="2">选择项2</a>
                                 </div>
                             </div>
                         </div>
+                        <span class="correct"></span>
+                        <span class="error">请选择省份</span>
+                    </lable>
+                    <lable class="mb30">
+                        <span class="require" style="opacity:0;"></span>
+                        <div class="select">
+                            <input class="selectVal" placeholder="请选择城市" type="text" readonly onblur="testWorkLocal(this,event)" id="atCity">
+                            <!--<i class="xl-icon"></i>-->
+                            <div class="selectList">
+                                <div class="listA-all">
+                                    <a href="javascript:;" class="listA" data-value="1">选择项1</a>
+                                    <a href="javascript:;" class="listA" data-value="2">选择项2</a>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="correct"></span>
+                        <span class="error">请选择城市</span>
+                    </lable>
+                    <lable class="mb30">
+                        <span class="require">擅长行业</span>
+                        <div id="select-container" style="display: inline-block;padding: 0">
+                            <label for="id_select"></label>
+                            <select id="id_select" class="selectpicker bla bla bli" multiple data-live-search="false" onchange="testMultiple(this)">
+                                <option value="111">张</option>
+                                <option value="222">里</option>
+                            </select>
+                        </div>
+                        <span class="correct"></span>
+                        <span class="error">请选择擅长行业</span>
                     </lable>
                     <lable class="mb30">
                         <span class="require">任职公司</span>
-                        <input type="text">
+                        <input type="text" onblur="testName()" id="atCompany">
+                        <span class="correct"></span>
+                        <span class="error">请输入任职公司</span>
                     </lable>
                     <lable class="mb50">
                         <span class="require">头衔/职位</span>
-                        <input type="text">
+                        <input type="text" onblur="testName()" id="atPosition">
+                        <span class="correct"></span>
+                        <span class="error">请输入头衔/职位</span>
                     </lable>
-                    <lable class="mb40">
+                    <lable class="mb40 lable_27" id="workExperience">
                         <span class="require">工作经历</span>
-                        <span class="add_span">添加</span>
-                        <div class="add_content">
-                            <div class="work_div">
-                                <span class="work_company">八斗猫（北京）人工智能技术有限公司</span>
-                                <span class="work_date">2018.01—2018.02</span>
-                                <div class="work_position">资深猎头顾问</div>
-                                <p class="work_intro">简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等</p>
+                        <span class="add_span" onclick="addWorkExperience(this)">添加</span>px
+                        <div class="add_content"></div>
+                        <div class="addWork">
+                            <span>公司</span>
+                            <span class="ml48">职位</span>
+                            <input type="text" placeholder="公司" id="workCompany">
+                            <input class="ml48" type="text" placeholder="职位" id="workPosition">
+                            <span>开始时间</span>
+                            <span class="ml48">结束时间</span>
+                            <input type="text" maxlength="7" placeholder="请以xxxx-xx格式输入" id="workStartDate">
+                            <input class="ml48" maxlength="7" type="text" placeholder="请以xxxx-xx格式输入" id="workOverDate">
+                            <span>工作描述</span>
+                            <textarea cols="30" rows="10" placeholder="简单描述您在岗职位的工作内容或职责范围等" id="workInfor"></textarea>
+                            <div style="text-align: center">
+                                <a class="btn_a" href="javascript:void(0)" onclick="cancleWork(this)">取消</a>
+                                <a class="btn_a" href="javascript:void(0)" onclick="workComplete(this)">保存</a>
                             </div>
                         </div>
-                        <!--<div class="addWork">-->
-                            <!--<span>公司</span>-->
-                            <!--<span class="ml48">职位</span>-->
-                            <!--<input type="text" placeholder="公司">-->
-                            <!--<input class="ml48" type="text" placeholder="职位">-->
-                            <!--<span>开始时间</span>-->
-                            <!--<span class="ml48">结束时间</span>-->
-                            <!--<input type="text">-->
-                            <!--<input class="ml48" type="text">-->
-                            <!--<span>工作描述</span>-->
-                            <!--<textarea name="" id="" cols="30" rows="10" placeholder="简单描述您在岗职位的工作内容或职责范围等"></textarea>-->
-                            <!--<div style="text-align: center">-->
-                                <!--<a class="btn_a" href="javascript:void(0)">取消</a>-->
-                                <!--<a class="btn_a" href="javascript:void(0)">保存</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
+                        <!--<span class="correct"></span>-->
+                        <!--<span class="error">请输入工作经历</span>-->
                     </lable>
-                    <lable class="mb40">
+                    <lable class="mb40 lable_27" id="eduExperience">
                         <span class="require">教育经历</span>
-                        <span class="add_span">添加</span>
-                        <div class="add_content">
-                            <div class="work_div">
-                                <span class="work_company">八斗猫（北京）人工智能技术有限公司</span>
-                                <span class="work_date">2018.01—2018.02</span>
-                                <div class="work_position">资深猎头顾问</div>
-                                <p class="work_intro">简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等</p>
+                        <span class="add_span" onclick="addEduExperience(this)">添加</span>
+                        <div class="add_content"></div>
+                        <div class="addWork">
+                            <span>学校</span>
+                            <span class="ml48">专业</span>
+                            <input type="text" placeholder="学校" id="eduSchool">
+                            <input class="ml48" type="text" placeholder="专业" id="eduSpeciality">
+                            <span>学历</span><br>
+                            <input type="text" placeholder="学历" id="eduAcademic"><br>
+                            <span>在校开始时间</span>
+                            <span class="ml48">在校结束时间</span>
+                            <input type="text" id="eduStartDate" maxlength="7" placeholder="请以xxxx-xx格式输入">
+                            <input class="ml48" type="text" id="eduOverDate" maxlength="7" placeholder="请以xxxx-xx格式输入">
+                            <span>教育经历描述</span>
+                            <textarea id="eduInfor" cols="30" rows="10" placeholder="请填写在校期间参与的活动及获得的荣誉"></textarea>
+                            <div style="text-align: center">
+                                <a class="btn_a" href="javascript:void(0)" onclick="cancleWork(this)">取消</a>
+                                <a class="btn_a" href="javascript:void(0)" onclick="eduComplete(this)">保存</a>
                             </div>
                         </div>
-                        <!--<div class="addWork">-->
-                            <!--<span>学校</span>-->
-                            <!--<span class="ml48">专业</span>-->
-                            <!--<input type="text" placeholder="学校">-->
-                            <!--<input class="ml48" type="text" placeholder="专业">-->
-                            <!--<span>学历</span><br>-->
-                            <!--<input type="text" placeholder="学历"><br>-->
-                            <!--<span>在校开始时间</span>-->
-                            <!--<span class="ml48">在校结束时间</span>-->
-                            <!--<input type="text">-->
-                            <!--<input class="ml48" type="text">-->
-                            <!--<span>教育经历描述</span>-->
-                            <!--<textarea name="" id="" cols="30" rows="10" placeholder="请填写在校期间参与的活动及获得的荣誉"></textarea>-->
-                            <!--<div style="text-align: center">-->
-                                <!--<a class="btn_a" href="javascript:void(0)">取消</a>-->
-                                <!--<a class="btn_a" href="javascript:void(0)">保存</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
+                        <!--<span class="correct"></span>-->
+                        <!--<span class="error">请输入教育经历</span>-->
                     </lable>
-                    <lable class="mb40">
+                    <lable class="mb40 lable_27">
                         <span class="require">自我介绍</span>
-                        <span class="add_span">添加</span>
-                        <div class="add_content">
-                            <p class="work_intro ml20">简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等简单描述您在岗职位的工作内容或职责范围等</p>
+                        <span class="add_span" onclick="addMyInfor(this)">添加</span>
+                        <div class="add_content"></div>
+                        <div class="addWork">
+                            <textarea id="myInforInfor" maxlength="200" cols="30" rows="10" placeholder="请填写在校期间参与的活动及获得的荣誉" onkeyup="myInfor(this)" onblur="testMyInfor(this)"></textarea>
+                            <span class="limitStr">0/200</span>
+                            <div style="text-align: center">
+                                <a class="btn_a mt11" href="javascript:void(0)" onclick="canclemyInfor(this)">取消</a>
+                                <a class="btn_a mt11" href="javascript:void(0)" onclick="savemyInfor(this)">保存</a>
+                            </div>
                         </div>
-                        <!--<div class="addWork">-->
-                            <!--<textarea maxlength="200" name="" id="" cols="30" rows="10" placeholder="请填写在校期间参与的活动及获得的荣誉"></textarea>-->
-                            <!--<span class="limitStr">0/200</span>-->
-                            <!--<div style="text-align: center">-->
-                                <!--<a class="btn_a mt11" href="javascript:void(0)">取消</a>-->
-                                <!--<a class="btn_a mt11" href="javascript:void(0)">保存</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
+                        <span class="correct"></span>
+                        <span class="error">请输入自我介绍</span>
                     </lable>
-                    <lable class="pb40">
+                    <lable class="lable_27">
                         <span class="require" style="width: 230px">上传职业证明资料</span>
-                        <div class="img_array">
-                            <span></span>
+                        <div class="img_array" id="img_array">
+                            <span class="upload_item_span">
+                                <a href="javascript:;" class="upload_item">
+                                    <input type="file" name="" id="">
+                                </a>
+                                <div>
+                                    <img class="img_item" src="img/index_download_QR@2x.png" alt="">
+                                    <img class="img_delete" src="img/career/up_icon_error@2x.png" alt="">
+                                </div>
+                            </span>
+                            <span class="upload_item_span">
+                                <a href="javascript:;" class="upload_item">
+                                    <input type="file" name="" id="">
+                                </a>
+                                <div>
+                                    <img class="img_item" src="img/index_download_QR@2x.png" alt="">
+                                    <img class="img_delete" src="img/career/up_icon_error@2x.png" alt="">
+                                </div>
+                            </span>
+                            <span class="upload_item_span">
+                                <a href="javascript:;" class="upload_item">
+                                    <input type="file" name="" id="">
+                                </a>
+                                <div>
+                                    <img class="img_item" src="img/index_download_QR@2x.png" alt="">
+                                    <img class="img_delete" src="img/career/up_icon_error@2x.png" alt="">
+                                </div>
+                            </span>
+                            <span class="upload_item_span">
+                                <a href="javascript:;" class="upload_item">
+                                    <input type="file" name="" id="">
+                                </a>
+                                <div>
+                                    <img class="img_item" src="img/index_download_QR@2x.png" alt="">
+                                    <img class="img_delete" src="img/career/up_icon_error@2x.png" alt="">
+                                </div>
+                            </span>
+                            <span class="upload_item_span">
+                                <a href="javascript:;" class="upload_item">
+                                    <input type="file" name="" id="">
+                                </a>
+                                <div>
+                                    <img class="img_item" src="img/index_download_QR@2x.png" alt="">
+                                    <img class="img_delete" src="img/career/up_icon_error@2x.png" alt="">
+                                </div>
+                            </span>
+                        </div>
+                        <p class="warn_p">
+                            请提供能体现职务的名片、工作证、加盖公章的在职证明、劳动合同和社保缴费证明等，仅供审核参考，信息保密。
+                        </p>
+                        <div class="noun">
+                            <span>
+                                <input type="checkbox" checked id="checkbox1" onchange="checkboxChange()">
+                            </span>
+                            <span>
+                                本人承诺为以上信息的真实性及准确性负责，并会在任职信息变更时及时更新职业资料
+                            </span>
                         </div>
                     </lable>
-                    <!--<a href="javascript:void(0)">下一步</a>-->
+                    <a class="nextBtn" href="javascript:void(0)" onclick="nextStep()">下一步</a>
                 </form>
             </div>
-            <div class="add_service_div">
-                服务内容
+            <div id="add_service_div" class="add_service_div">
+                <form name="" method="post">
+                    <div class="add_service_form_div">
+                        <lable class="mb50 lable_27 content_on_lable">
+                            <span class="require">服务内容</span>
+                            <span class="add_span" onclick="editServiceContent(this)">添加</span>
+                            <div class="service_content sevice_onon" style="padding-top:0"></div>
+                        </lable>
+                        <lable class="mb48 lable_27 content_lable">
+                            <span class="require">服务内容<span style="font-size: 20px">（20-1000字）</span></span>
+                            <div class="addWork">
+                                <div class="sevice_content">
+                                    <span class="active" onclick="checkSeviceContent(this)" data-value="1">推荐工作</span>
+                                    <span onclick="checkSeviceContent(this)" data-value="2">求职咨询</span>
+                                    <span onclick="checkSeviceContent(this)" data-value="3">简历优化</span>
+                                    <span onclick="checkSeviceContent(this)" data-value="4">简历翻译</span>
+                                </div>
+                                <div class="sevice_select_div">
+                                    <div class="select sevice_select">
+                                        <input class="selectVal" placeholder="请选择小时数" type="text" readonly>
+                                        <i class="xl-icon"></i>
+                                        <div class="selectList">
+                                            <div class="listA-all">
+                                                <a href="javascript:;" class="listA" data-value="1">0.5小时</a>
+                                                <a href="javascript:;" class="listA" data-value="2">1小时</a>
+                                                <a href="javascript:;" class="listA" data-value="3">1.5小时</a>
+                                                <a href="javascript:;" class="listA" data-value="4">2小时</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sevice_count">1   次</div>
+                            </div>
+                        </lable>
+                        <lable class="mb40 lable_27 lable_w138">
+                            <span class="require">服务价格</span>
+                            <div class="price_span">
+                                <input class="service_price" type="text">
+                            </div>
+                            <p class="price_warn">·  价格不代表资历及水平，而是用户用来向专业服务表达的认可。<br>
+                                ·  八斗猫猎头服务均价约为500元，建议您将价格设定在300-1500元区间，更容易被预约。</p>
+                        </lable>
+                        <lable class="mb50 lable_27 lable_w138">
+                            <span class="require">完成时间</span>
+                            <div class="date_span">
+                                <input class="service_date" type="text">
+                            </div>
+                            <p class="price_warn">·  该项服务正常情况下需要完成的时间，例如如2-4个工作日，1-3个月，或双方协商等</p>
+                            <div style="text-align: center">
+                                <a class="btn_a mt11" href="javascript:void(0)" onclick="cancleService(this)">取消</a>
+                                <a class="btn_a mt11" href="javascript:void(0)" onclick="saveService(this)">保存</a>
+                            </div>
+                        </lable>
+                        <lable class="mb50 lable_27">
+                            <span class="require">服务内容描述 <span style="font-size: 20px">（20-1000字）</span></span>
+                            <span class="add_span" onclick="addContentVerb(this)">添加</span>
+                            <div class="add_content"></div>
+                            <div class="addWork">
+                                <textarea class="contentTextarea" onkeyup="myContentVerb(this)" maxlength="1000" minlength="20" cols="30" rows="10" placeholder="描述清楚该服务内容具体包括什么内容，需要多久，如何完成，达到什么效果，以便求职者预约。"></textarea>
+                                <span class="limitStr">0/1000</span>
+                                <div style="text-align: center">
+                                    <a class="btn_a mt11" href="javascript:void(0)" onclick="cancleContentVerb(this)">取消</a>
+                                    <a class="btn_a mt11" href="javascript:void(0)" onclick="saveContentVerb(this)">保存</a>
+                                </div>
+                            </div>
+                        </lable>
+                        <lable class="mb50 lable_27">
+                            <span class="require">在招职位 <span style="font-size: 20px">（20-300字）</span></span>
+                            <span class="add_span" onclick="addRecruitPos(this)">添加</span>
+                            <div class="add_content"></div>
+                            <div class="addWork">
+                                <textarea class="positionTextarea" onkeyup="myRecruitPos(this)" maxlength="300" minlength="20" cols="30" rows="10" placeholder="近期在招的职位，如某某公司的什么职位，工作地点，年薪等。"></textarea>
+                                <span class="limitStr">0/300</span>
+                                <div style="text-align: center">
+                                    <a class="btn_a mt11" href="javascript:void(0)" onclick="cancleRecruitPos(this)">取消</a>
+                                    <a class="btn_a mt11" href="javascript:void(0)" onclick="saveRecruitPos(this)">保存</a>
+                                </div>
+                            </div>
+                        </lable>
+                        <lable class="mb50 lable_27">
+                            <span class="require">为什么选我 <span style="font-size: 20px">（20-500字）</span></span>
+                            <span class="add_span" onclick="addWhyMe(this)">添加</span>
+                            <div class="add_content"></div>
+                            <div class="addWork">
+                                <textarea class="whyMeTextarea" onkeyup="myWhyMe(this)" maxlength="500" minlength="20" name="" id="" cols="30" rows="10" placeholder="近期在招的职位，如某某公司的什么职位，工作地点，年薪等。"></textarea>
+                                <span class="limitStr">0/500</span>
+                                <div style="text-align: center">
+                                    <a class="btn_a mt11" href="javascript:void(0)" onclick="cancleWhyMe(this)">取消</a>
+                                    <a class="btn_a mt11" href="javascript:void(0)" onclick="saveWhyMe(this)">保存</a>
+                                </div>
+                            </div>
+                        </lable>
+                        <lable class="mb50 lable_27">
+                            <span>其他补充说明</span>
+                            <span class="add_span" onclick="addAddRemark(this)">添加</span>
+                            <div class="add_content"></div>
+                            <div class="addWork">
+                                <textarea class="addRemarkTextarea" onkeyup="myAddRemark(this)" maxlength="300" cols="30" rows="10" placeholder="描述清楚该服务内容具体包括什么内容，需要多久，如何完成，达到什么效果，以便求职者预约。"></textarea>
+                                <span class="limitStr">0/300</span>
+                                <div style="text-align: center">
+                                    <a class="btn_a mt11" href="javascript:void(0)" onclick="cancleAddRemark(this)">取消</a>
+                                    <a class="btn_a mt11" href="javascript:void(0)" onclick="saveAddRemark(this)">保存</a>
+                                </div>
+                            </div>
+                        </lable>
+                    </div>
+
+                    <div class="add_service_content" onclick="addServiceDiv(this)">
+                        + 继续添加服务内容
+                    </div>
+                    <div class="noun" style="padding-top: 0;padding-bottom: 46px; margin-top: 50px;">
+                            <span>
+                                <input type="checkbox" checked id="checkbox2" onchange="checkboxChange2()">
+                            </span>
+                            <span>
+                                本人承诺为以上信息的真实性及准确性负责，并会在任职信息变更时及时更新职业资料
+                            </span>
+                    </div>
+                    <a class="nextBtn submit_btn" href="javascript:void(0)" onclick="prevStep()">返回上一步</a>
+                    <a class="nextBtn redBtn submit_btn" href="javascript:void(0)" onclick="submitVerify()">提交认证</a>
+                </form>
             </div>
         </div>
     </div>
@@ -224,8 +415,33 @@
             </div>
         </div>
     </div>
+    <div class="dialogError">
+        <p></p>
+        <span onclick="closeError(this)"></span>
+    </div>
 </body>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/js.js"></script>
-<script type="text/javascript" src="js/dropDown.js"></script>
+<script src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap-select.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+  $(window).on('load', function () {
+    $('.selectpicker').selectpicker({
+      'selectedText': 'cat'
+    });
+  });
+  // 判断擅长行业
+  function testMultiple(obj) {
+    var el = obj ? obj : '#id_select'
+    if($('#id_select').selectpicker('val')){
+      $(el).siblings('div').children('button').removeClass('redError').addClass('blueCorrect').parent('div').parent('div').siblings('span.correct').show().siblings('span.error').hide()
+      return true
+    }else {
+      $(el).siblings('div').children('button').addClass('redError').removeClass('blueCorrect').parent('div').parent('div').siblings('span.correct').hide().siblings('span.error').show()
+      return false
+    }
+  }
+</script>
+<script type="text/javascript" src="js/career.js"></script>
 </html>

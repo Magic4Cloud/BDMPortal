@@ -10,7 +10,6 @@ a {
     position: relative;
     width: 100px;
     height: 45px;
-    border: 1px solid #CCCCCC;
     border-radius: 6px;
     line-height: 45px;
     font-size: 14px;
@@ -24,8 +23,8 @@ a {
     background: url(../img/down_icon@2x.png) center/cover;
     right: 25px;
     top: 15px;
+    opacity: 0;
 }
-
 .select:hover, .selectNext:hover {
     background-color: #f7f7f7;
 }
@@ -36,13 +35,14 @@ a {
 .selectList, .selectListNext {
     z-index: 999;
     display: none;
-    width: 440px;
+    width: 380px;
     border: 1px solid #CCCCCC;
-    border-radius: 6px;
+    border-radius: 0 0 4px 4px;
     position: absolute;
     top: 38px;
-    left: -1px;
+    left: 0;
     box-sizing: border-box;
+    background: white;
 }
 .listA, .listANext {
     width: 100%;

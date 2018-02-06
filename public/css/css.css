@@ -9,6 +9,9 @@ body{
 a:hover, a:visited, a:link, a:active {
 	text-decoration: none;
 }
+a:focus{
+    outline: none!important;
+}
 ul,li,p{
     margin: 0;
     padding: 0;
@@ -259,6 +262,7 @@ div.footer_bottom>div{
     width: 50%;
     box-sizing: border-box;
     display: inline-block;
+    vertical-align: top;
 }
 div.footer_bottom>div:first-child{
     border-right: 1px solid rgba(255,255,255,.2);
@@ -410,7 +414,6 @@ div.dialogLogin>div>form>a{
     font-family:FZLTHJW--GB1-0;
     color:rgba(255,255,255,1);
 }
-
 
 
 
