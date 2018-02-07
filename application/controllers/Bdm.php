@@ -37,6 +37,19 @@ class Bdm extends CI_Controller
         echo json_encode($response);
     }
 
+    public function city()
+    {
+        $parent_code = $this->input->post('code');
+        $lists = $this->region->citys($parent_code);
+        $response = [
+            'code' => 200,
+            'msg'  => '',
+            'data' => $lists,
+        ];
+        header('Content-type: application/json');
+        echo json_encode($response);
+    }
+
     public function industry()
     {
         $lists = $this->industry->all_industry();

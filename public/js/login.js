@@ -22,6 +22,7 @@ $('.login').click(function () {
             {
                 alert(data.msg);
             }
+            console.log('登录成功');
             $('.logindiv').hide();
         }
     });

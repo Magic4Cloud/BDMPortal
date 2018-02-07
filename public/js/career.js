@@ -8,8 +8,31 @@ $(function(){
   $(document).on('blur','.selectVal',function (e) {
     $(this).siblings('.selectList').hide().siblings('.xl-icon').removeClass('sq-icon');
     var el = $(e.relatedTarget)
-    if(e.relatedTarget && (e.relatedTarget.className == 'listA')) {
+    if(e.relatedTarget && ($(e.relatedTarget).hasClass('listA'))) {
       $(this).val(el.text()).text(el.data('value'))
+        if($(e.relatedTarget).hasClass('list-province')){
+            var code = el.data('value');
+            var that = $(this)
+                $.ajax({
+                    type: "POST",
+                    url: 'http://portal.me/bdm/city',
+                    data: {"code":code},
+                    dataType: "json",
+                    headers : {"Bdm-Timestamp":(new Date()).valueOf()},
+                    success: function(data){
+                      var data = data.data
+                      $('#atCity').next().children('.listA-all').html('')
+                        for (var i = 0 ; i< data.length ; i++){
+                            $('#atCity').next().children('.listA-all').html($('#atCity').next().children('.listA-all').html()+
+                                '<a href="javascript:;" class="listA" data-value="'+data[i].code+'">'+data[i].name+'</a>'
+                            )
+                        }
+                        $('#atCity').val('').text('').removeClass('redError').removeClass('blueCorrect').parent().siblings('span.correct').hide().siblings('span.error').hide()
+                        that.parent().parent().next().show()
+                    }
+            });
+
+        }
     }
   })
 });

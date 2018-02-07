@@ -58,15 +58,14 @@
                         <span class="correct"></span>
                         <span class="error">请选择省份</span>
                     </lable>
-                    <lable class="mb30">
+                    <lable class="mb30" style="display: none">
                         <span class="require" style="opacity:0;"></span>
                         <div class="select">
                             <input class="selectVal" placeholder="请选择城市" type="text" readonly onblur="testWorkLocal(this,event)" id="atCity">
                             <!--<i class="xl-icon"></i>-->
                             <div class="selectList">
                                 <div class="listA-all">
-                                    <a href="javascript:;" class="listA" data-value="1">选择项1</a>
-                                    <a href="javascript:;" class="listA" data-value="2">选择项2</a>
+
                                 </div>
                             </div>
                         </div>
@@ -448,8 +447,5 @@
 <script type="text/javascript" src="../../../public/js/career.js"></script>
 <script type="text/javascript" src="../../../public/js/login.js"></script>
 <script type="text/javascript">
-  $(document).on('click','.list-province',function () {
-    console.log($(this))
-  })
 </script>
 </html>
