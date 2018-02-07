@@ -78,7 +78,7 @@
                             <label for="id_select"></label>
                             <select id="id_select" class="selectpicker bla bla bli" multiple data-live-search="false" onchange="testMultiple(this)">
                                 <?php foreach ($industry as $v): ?>
-                                <option value="111"><?=$v['name']?></option>
+                                <option value="<?=$v['id']?>"><?=$v['name']?></option>
                                 <?php endforeach;?>
                             </select>
                         </div>
@@ -214,7 +214,7 @@
                         </p>
                         <div class="noun">
                             <span>
-                                <input type="checkbox" checked id="checkbox1" onchange="checkboxChange()">
+                                <input type="checkbox" checked id="checkbox1" onchange="checkboxChange()" disabled>
                             </span>
                             <span>
                                 本人承诺为以上信息的真实性及准确性负责，并会在任职信息变更时及时更新职业资料
@@ -336,7 +336,7 @@
                     </div>
                     <div class="noun" style="padding-top: 0;padding-bottom: 46px; margin-top: 50px;">
                             <span>
-                                <input type="checkbox" checked id="checkbox2" onchange="checkboxChange2()">
+                                <input type="checkbox" checked id="checkbox2" onchange="checkboxChange2()" disabled>
                             </span>
                             <span>
                                 本人承诺为以上信息的真实性及准确性负责，并会在任职信息变更时及时更新职业资料
@@ -398,19 +398,19 @@
     <div class="dialogUpload" onclick="closeAvatar(this)">
         <div>
             <div class="avatar_upload">
-                <!--<a href="javascript:;" class="avatar_upload1">+ 添加照片-->
-                    <!--<input type="file" name="" id="">-->
-                <!--</a>-->
-                <div class="avatar_div">
-                    <img src="../../../public/img/index_fot_QR@2x.png" alt="">
-                    <div></div>
-                </div>
+                <a href="javascript:;" class="avatar_upload1">+ 添加照片
+                    <input type="file" name="" id="">
+                </a>
+                <!--<div class="avatar_div">-->
+                    <!--<img src="../../../public/img/index_fot_QR@2x.png" alt="">-->
+                    <!--<div></div>-->
+                <!--</div>-->
             </div>
             <p>头像支持jpg，png，gif格式图片，请尽可能选用160*160以上照片</p>
             <div class="btn_div">
-                <a href="javascript:;" class="avatar_upload2">更换图片
-                    <input type="file" name="" id="">
-                </a>
+                <!--<a href="javascript:;" class="avatar_upload2">更换图片-->
+                    <!--<input type="file" name="" id="">-->
+                <!--</a>-->
                 <a class="btn_a" href="" onclick="closeAvatar()">取消</a>
                 <a class="btn_a" href="">保存</a>
             </div>

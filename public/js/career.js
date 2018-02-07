@@ -37,7 +37,9 @@ $(function(){
   })
 });
 var serviceHtml = $("form>.add_service_form_div:first-child").prop("outerHTML")
-var workData = [],eduData=[],myInformation='',checkstatus = true,checkstatus2 = true
+var workData = [],eduData=[],myInformation='',checkstatus = true,checkstatus2 = true,file_keys = [
+    "2018/02/02/15175635385a742e92aba95.png","2018/02/06/15179002105a7951b23b51a.jpeg"
+]
 // 判断姓名
 function testName(obj) {
   var el = obj ? obj : event.target
@@ -98,11 +100,12 @@ function ValueNull(obj) {
 function workComplete(obj) {
   if(ValueNull('#workCompany')&&ValueNull('#workPosition')&&IsDate('#workStartDate')&&IsDate('#workOverDate')&&ValueNull('#workInfor')){
     workData.push({
-      'workCompany': $('#workCompany').val(),
-      'workPosition': $('#workPosition').val(),
-      'workStartDate': $('#workStartDate').val(),
-      'workOverDate': $('#workOverDate').val(),
-      'workInfor': $('#workInfor').val()
+      'EXCompany': $('#workCompany').val(),
+      'EXCareer': $('#workPosition').val(),
+      'StartTime': $('#workStartDate').val(),
+      'EndTime': $('#workOverDate').val(),
+        'TimeDuration': $('#workStartDate').val()+'~'+$('#workStartDate').val(),
+      'DescriptionWork': $('#workInfor').val()
     })
     $('#workExperience').children('div.add_content').html(
       $('#workExperience').children('div.add_content').html()+
@@ -139,12 +142,13 @@ function eduComplete(obj) {
   $('#eduExperience').children('span.error').hide()
   if(ValueNull('#eduSchool')&&ValueNull('#eduSpeciality')&&ValueNull('#eduAcademic')&&IsDate('#eduStartDate')&&IsDate('#eduOverDate')&&ValueNull('#eduInfor')){
     eduData.push({
-      'eduSchool': $('#eduSchool').val(),
-      'eduSpeciality': $('#eduSpeciality').val(),
-      'eduAcademic': $('#eduAcademic').val(),
-      'eduStartDate': $('#eduStartDate').val(),
-      'eduOverDate': $('#eduOverDate').val(),
-      'eduInfor': $('#eduInfor').val()
+      'School': $('#eduSchool').val(),
+      'Profession': $('#eduSpeciality').val(),
+      'EducationDegree': $('#eduAcademic').val(),
+      'StartTime': $('#eduStartDate').val(),
+      'EndTime': $('#eduOverDate').val(),
+      'TimeDuration': $('#eduStartDate').val()+'~'+$('#eduOverDate').val(),
+      'DescriptionEducation': $('#eduInfor').val()
     })
     $('#eduExperience').children('div.add_content').html(
       $('#eduExperience').children('div.add_content').html()+
@@ -202,7 +206,9 @@ function checkboxChange() {
 }
 // 下一步
 function nextStep() {
-  var nullArray = []
+    //console.log($('#id_select').selectpicker('val'));
+
+    var nullArray = []
   testName('#realName')
   testWorkLocal('#atProvince')
   testWorkLocal('#atCity')
@@ -225,8 +231,10 @@ function nextStep() {
       && checkstatus
     ){
       //在此执行下一步操作
-      $('#service_span').addClass('active')
-      $('#material_div').hide().siblings('#add_service_div').show()
+        $('#service_span').addClass('active')
+        $('#material_div').hide().siblings('#add_service_div').show()
+
+
     }else {
       $('.dialogError').show().children('p').text('请将信息填写完整')
     }
@@ -461,7 +469,29 @@ function submitVerify() {
   if(seviceContentArray.length != 0){
     seviceContentArray.map(function (item) {
       if(item.contentTextarea&&item.positionTextarea&&item.name&&item.whyMeTextarea&&checkstatus2){
-        //再次做提交操作
+        //提交操作
+          $.ajax({
+              type: "POST",
+              url: 'http://api.bdm.qa.cloud4magic.com/mobile/user/addProfessionInfo',
+              headers : {"Bdm-Timestamp":(new Date()).valueOf(),"Bdm-Token":getCookie('token')},
+              data: {
+
+                  "avatar" : '2018/02/06/15178903985a792b5ed185f.jpeg',
+                  "code":  $('#atCity').text(),
+                  "excel": JSON.stringify($('#id_select').selectpicker('val')),
+                  "company" : $('#atCompany').val(),
+                  "position" : $('#atPosition').val(),
+                  "work" :     JSON.stringify(workData),
+                  "education" : JSON.stringify(eduData),
+                  "intro" : myInformation,
+                  "file_keys" : JSON.stringify(file_keys)
+
+              },
+              dataType: "json",
+              success: function(data){
+                
+              }
+          });
         console.log('成功')
       }else {
         $('.dialogError').show().children('p').text('信息未填写完整')
@@ -470,4 +500,13 @@ function submitVerify() {
   }else {
     $('.dialogError').show().children('p').text('信息未填写或保存')
   }
+}
+
+function getCookie(name)
+{
+    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+    if(arr=document.cookie.match(reg))
+        return unescape(arr[2]);
+    else
+        return null;
 }

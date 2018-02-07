@@ -22,8 +22,22 @@ $('.login').click(function () {
             {
                 alert(data.msg);
             }
-            console.log('登录成功');
+            console.log(data.data.token);
+            //token存入cookie
+            writeCookie('token',data.data.token,24);
             $('.logindiv').hide();
         }
     });
 });
+
+//Cookie设置值
+function writeCookie (name, value, hours)
+{
+    var expire = "";
+    if (hours != null)
+    {
+        expire = new Date ((new Date ()).getTime () + hours * 3600000);
+        expire = "; expires=" + expire.toGMTString ();
+    }
+    document.cookie = name + "=" + escape (value) + expire;
+}
