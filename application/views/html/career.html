@@ -14,9 +14,9 @@
         <div class="navbar">
             <img class="nav_logo" src="../../../public/img/index_nav_logo@2x.png" alt="">
             <ul class="nav_list">
-                <li><a href="javascript:void(0)">首页</a></li>
-                <li><a class="active" href="javascript:void(0)">成为职业顾问</a></li>
-                <li><a href="javascript:void(0)">FAQ</a></li>
+                <li><a href="<?php echo base_url('bdm/index')?>">首页</a></li>
+                <li><a class="active" href="<?php echo base_url('bdm/career')?>">成为职业顾问</a></li>
+                <li><a href="<?php echo base_url('bdm/faq')?>">FAQ</a></li>
                 <li><a href="javascript:void(0)" onclick="openLogin()">登录/注册</a></li>
             </ul>
         </div>
@@ -49,8 +49,9 @@
                             <!--<i class="xl-icon"></i>-->
                             <div class="selectList">
                                 <div class="listA-all">
-                                    <a href="javascript:;" class="listA" data-value="1">选择项1</a>
-                                    <a href="javascript:;" class="listA" data-value="2">选择项2</a>
+                                    <?php foreach ($lists as $value):?>
+                                    <a href="javascript:;" class="listA list-province" data-value="<?=$value['code']?>"><?=$value['name']?></a>
+                                    <?php endforeach;?>
                                 </div>
                             </div>
                         </div>
@@ -77,8 +78,9 @@
                         <div id="select-container" style="display: inline-block;padding: 0">
                             <label for="id_select"></label>
                             <select id="id_select" class="selectpicker bla bla bli" multiple data-live-search="false" onchange="testMultiple(this)">
-                                <option value="111">张</option>
-                                <option value="222">里</option>
+                                <?php foreach ($industry as $v): ?>
+                                <option value="111"><?=$v['name']?></option>
+                                <?php endforeach;?>
                             </select>
                         </div>
                         <span class="correct"></span>
@@ -444,4 +446,10 @@
   }
 </script>
 <script type="text/javascript" src="../../../public/js/career.js"></script>
+<script type="text/javascript" src="../../../public/js/login.js"></script>
+<script type="text/javascript">
+  $(document).on('click','.list-province',function () {
+    console.log($(this))
+  })
+</script>
 </html>

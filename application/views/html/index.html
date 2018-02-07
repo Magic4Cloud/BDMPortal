@@ -9,12 +9,12 @@
     <div class="nav">
         <div class="navbar">
             <img class="nav_logo" src="../../../public/img/index_nav_logo@2x.png" alt="">
-            <!--<ul class="nav_list">-->
-                <!--<li><a class="active" href="javascript:void(0)">首页</a></li>-->
-                <!--<li><a href="javascript:void(0)">成为职业顾问</a></li>-->
-                <!--<li><a href="javascript:void(0)">FAQ</a></li>-->
-                <!--<li><a href="javascript:void(0)" onclick="openLogin()">登录/注册</a></li>-->
-            <!--</ul>-->
+            <ul class="nav_list">
+                <li><a class="active" href="<?php echo base_url('bdm/index')?>">首页</a></li>
+                <li><a href="<?php echo base_url('bdm/career')?>">成为职业顾问</a></li>
+                <li><a href="<?php echo base_url('bdm/faq')?>">FAQ</a></li>
+                <li><a href="javascript:void(0)" onclick="openLogin()">登录/注册</a></li>
+            </ul>
         </div>
     </div>
     <div class="banner">
@@ -147,7 +147,7 @@
     </div>
     <p>Copyright © 2018 , All Rights Reserved</p>
     <div class="dialogLogin" onclick="closeLogin(this)">
-        <div>
+        <div class="logindiv">
             <span>欢迎登录八斗猫</span>
             <form action="">
                 <div>
@@ -161,11 +161,12 @@
                     <div class="form_safe_num">发送验证码</div>
                 </div>
                 <span>请输入有效手机号</span>
-                <a href="javascript:void(0)">登录</a>
+                <a href="javascript:void(0)" class="login">登录</a>
             </form>
         </div>
     </div>
 </body>
 <script type="text/javascript" src="../../../public/js/jquery.js"></script>
 <script type="text/javascript" src="../../../public/js/js.js"></script>
+<script type="text/javascript" src="../../../public/js/login.js"></script>
 </html>
