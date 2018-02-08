@@ -299,13 +299,24 @@ function saveService(obj) {
   // 当前服务内容类型
   var currenttype = parentDiv.find('div.sevice_content').children('span').index(parentDiv.find('span.active'))
   var errorArray = []
-	// var num = '次'
+	var num = '次'
   // if(currenttype == 1){
   //   if (parentDiv.find('input.selectVal').val() == ''){
   //     errorArray.push('时间')
   //   }
   //   num = parentDiv.find('input.selectVal').val()
   // }
+	switch(currenttype)
+	{
+		case 1:
+			num = '小时'
+			break;
+		case 0:
+			num = '次'
+			break;
+		default:
+			num = '份'
+	}
   if(parentDiv.find('input.service_price').val() == ''){
     errorArray.push('服务价格')
   }
