@@ -269,13 +269,24 @@ var seviceContentArray = [],isQiuZhi = false,contentArray = [
 ]
 // 切换服务内容
 function checkSeviceContent(obj) {
-  if($(obj).parent('.sevice_content').children('span').index($(obj)) == 1){
-    isQiuZhi = true
-    $(obj).parent('div.sevice_content').siblings('div.sevice_select_div').show().siblings('div.sevice_count').hide()
-  }else {
-    isQiuZhi = false
-    $(obj).parent('div.sevice_content').siblings('div.sevice_select_div').hide().siblings('div.sevice_count').show()
-  }
+  // if($(obj).parent('.sevice_content').children('span').index($(obj)) == 1){
+  //   isQiuZhi = true
+  //   $(obj).parent('div.sevice_content').siblings('div.sevice_select_div').show().siblings('div.sevice_count').hide()
+  // }else {
+  //   isQiuZhi = false
+  //   $(obj).parent('div.sevice_content').siblings('div.sevice_select_div').hide().siblings('div.sevice_count').show()
+  // }
+	switch($(obj).parent('.sevice_content').children('span').index($(obj)))
+	{
+		case 1:
+			$(obj).parent('div.sevice_content').siblings('div.sevice_count').text('1小时')
+			break;
+		case 0:
+			$(obj).parent('div.sevice_content').siblings('div.sevice_count').text('1次')
+			break;
+		default:
+			$(obj).parent('div.sevice_content').siblings('div.sevice_count').text('1份')
+	}
   $(obj).parent('.sevice_content').children('span').removeClass('active')
   $(obj).addClass('active').siblings('span').removeClass('active')
 }
@@ -287,13 +298,14 @@ function saveService(obj) {
   var currentIndex = $('#add_service_div>form>div.add_service_form_div').index(parentDiv)
   // 当前服务内容类型
   var currenttype = parentDiv.find('div.sevice_content').children('span').index(parentDiv.find('span.active'))
-  var errorArray = [],num = '次'
-  if(currenttype == 1){
-    if (parentDiv.find('input.selectVal').val() == ''){
-      errorArray.push('时间')
-    }
-    num = parentDiv.find('input.selectVal').val()
-  }
+  var errorArray = []
+	// var num = '次'
+  // if(currenttype == 1){
+  //   if (parentDiv.find('input.selectVal').val() == ''){
+  //     errorArray.push('时间')
+  //   }
+  //   num = parentDiv.find('input.selectVal').val()
+  // }
   if(parentDiv.find('input.service_price').val() == ''){
     errorArray.push('服务价格')
   }
@@ -304,7 +316,7 @@ function saveService(obj) {
     //操作保存
     seviceContentArray[currentIndex] = seviceContentArray[currentIndex] ? seviceContentArray[currentIndex] : {}
     seviceContentArray[currentIndex].type_id = parentDiv.find('span.active').data('value')
-    seviceContentArray[currentIndex].count = num
+    // seviceContentArray[currentIndex].count = num
     seviceContentArray[currentIndex].service_price = parentDiv.find('input.service_price').val()
     seviceContentArray[currentIndex].service_time = parentDiv.find('input.service_date').val()
     parentDiv.find('div.sevice_onon').html(
