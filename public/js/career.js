@@ -20,16 +20,23 @@ $(function(){
                     dataType: "json",
                     headers : {"Bdm-Timestamp":(new Date()).valueOf()},
                     success: function(data){
-                      var data = data.data
-                      $('#atCity').next().children('.listA-all').html('')
-                        for (var i = 0 ; i< data.length ; i++){
-                            $('#atCity').next().children('.listA-all').html($('#atCity').next().children('.listA-all').html()+
-                                '<a href="javascript:;" class="listA" data-value="'+data[i].code+'">'+data[i].name+'</a>'
-                            )
-                        }
-                        $('#atCity').val('').text('').removeClass('redError').removeClass('blueCorrect').parent().siblings('span.correct').hide().siblings('span.error').hide()
-                        that.parent().parent().next().show()
-                    }
+											if(data.code == 200){
+												var data = data.data
+												$('#atCity').next().children('.listA-all').html('')
+												for (var i = 0 ; i< data.length ; i++){
+													$('#atCity').next().children('.listA-all').html($('#atCity').next().children('.listA-all').html()+
+														'<a href="javascript:;" class="listA" data-value="'+data[i].code+'">'+data[i].name+'</a>'
+													)
+												}
+												$('#atCity').val('').text('').removeClass('redError').removeClass('blueCorrect').parent().siblings('span.correct').hide().siblings('span.error').hide()
+												that.parent().parent().next().show()
+											}else {
+												alert('获取城市失败')
+											}
+                    },
+									error: function (err) {
+										alert('请求错误')
+									}
             });
 
         }
@@ -39,7 +46,7 @@ $(function(){
 var serviceHtml = $("form>.add_service_form_div:first-child").prop("outerHTML")
 var workData = [],eduData=[],myInformation='',checkstatus = true,checkstatus2 = true,file_keys = [
     "2018/02/02/15175635385a742e92aba95.png","2018/02/06/15179002105a7951b23b51a.jpeg"
-]
+],avatar = '2018/02/02/15175635385a742e92aba95.png'
 // 判断姓名
 function testName(obj) {
   var el = obj ? obj : event.target
@@ -215,11 +222,13 @@ function nextStep() {
   testMultiple('#id_select')
   testName('#atCompany')
   testName('#atPosition')
-  //头像和资料未判断
+  //头像和资料已判断
+  if(avatar&&avatar == ''){nullArray.push('头像')}
   if(workData.length == 0){nullArray.push('工作经历')}
   if(eduData.length == 0){nullArray.push('教育经历')}
   if(myInformation == ''){nullArray.push('自我介绍')}
-  if(nullArray.length != 0){
+  if(file_keys.length == 0){nullArray.push('职业资料')}
+	if(nullArray.length != 0){
     $('.dialogError').show().children('p').text(nullArray.join('、')+'未填写')
   }else {
     if(testName('#realName')
@@ -233,8 +242,6 @@ function nextStep() {
       //在此执行下一步操作
         $('#service_span').addClass('active')
         $('#material_div').hide().siblings('#add_service_div').show()
-
-
     }else {
       $('.dialogError').show().children('p').text('请将信息填写完整')
     }
@@ -476,7 +483,7 @@ function submitVerify() {
               url: 'http://bdm.me/mobile/user/addProfessionInfo',
               headers : {"Bdm-Timestamp":(new Date()).valueOf(),"Bdm-Token":getCookie('token')},
               data: {
-                  "avatar" : '2018/02/06/15178903985a792b5ed185f.jpeg',
+                  "avatar" : avatar,
                   "code":  $('#atCity').text(),
                   "excel": JSON.stringify($('#id_select').selectpicker('val')),
                   "company" : $('#atCompany').val(),
@@ -489,22 +496,34 @@ function submitVerify() {
               dataType: "json",
               success: function(data){
                 //成功后,添加服务内容
-                  $.ajax({
-                      type: "POST",
-                      url: 'http://bdm.me/mobile/service/create',
-                      headers : {"Bdm-Timestamp":(new Date()).valueOf(),"Bdm-Token":getCookie('token')},
-                      data: {
-                          "he_id" : data.data.he_id,
-                          "services":  JSON.stringify(seviceContentArray)
-                      },
-                      dataType: "json",
-                      success: function(response){
-                        console.log(response)
-
-                      }
-                  });
-
-              }
+								if(data.code == 200){
+									$.ajax({
+										type: "POST",
+										url: 'http://bdm.me/mobile/service/create',
+										headers : {"Bdm-Timestamp":(new Date()).valueOf(),"Bdm-Token":getCookie('token')},
+										data: {
+											"he_id" : data.data.he_id,
+											"services":  JSON.stringify(seviceContentArray)
+										},
+										dataType: "json",
+										success: function(response){
+											if(response.code == 200){
+												console.log(response)
+											}else {
+												alert('认证失败')
+											}
+										},
+										error: function (err) {
+											alert(err)
+										}
+									});
+								}else {
+									alert('认证失败')
+								}
+              },
+						error: function (err) {
+							alert(err)
+						}
           });
 
 
