@@ -124,7 +124,8 @@ function workComplete(obj) {
     '</div>')
     $(obj).parent('div').parent('div.addWork').hide().siblings('span.add_span').show()
   }else{
-    $('.dialogError').show().children('p').text('工作经历填写有误')
+    // $('.dialogError').show().children('p').text('工作经历填写有误')
+		alert('工作经历填写有误')
   }
 }
 // 取消工作经历
@@ -167,7 +168,8 @@ function eduComplete(obj) {
       '</div>')
     $(obj).parent('div').parent('div.addWork').hide().siblings('span.add_span').show()
   }else{
-    $('.dialogError').show().children('p').text('教育经历填写有误')
+    // $('.dialogError').show().children('p').text('教育经历填写有误')
+		alert('教育经历填写有误')
   }
 }
 
@@ -185,7 +187,8 @@ function testMyInfor(obj) {
   if(ValueNull(obj)) {
     return true
   }else {
-    $('.dialogError').show().children('p').text('自我介绍未填写')
+    // $('.dialogError').show().children('p').text('自我介绍未填写')
+		alert('自我介绍未填写')
     return false
   }
 }
@@ -229,7 +232,8 @@ function nextStep() {
   if(myInformation == ''){nullArray.push('自我介绍')}
   if(file_keys.length == 0){nullArray.push('职业资料')}
 	if(nullArray.length != 0){
-    $('.dialogError').show().children('p').text(nullArray.join('、')+'未填写')
+    // $('.dialogError').show().children('p').text(nullArray.join('、')+'未填写')
+		alert(nullArray.join('、')+'未填写')
   }else {
     if(testName('#realName')
       && testWorkLocal('#atProvince')
@@ -243,7 +247,8 @@ function nextStep() {
         $('#service_span').addClass('active')
         $('#material_div').hide().siblings('#add_service_div').show()
     }else {
-      $('.dialogError').show().children('p').text('请将信息填写完整')
+      // $('.dialogError').show().children('p').text('请将信息填写完整')
+			alert('请将信息填写完整')
     }
   }
 }
@@ -311,7 +316,8 @@ function saveService(obj) {
     parentDiv.find('lable.content_on_lable').css('display','block').next().hide().next().hide().next().hide()
     parentDiv.find('lable.content_on_lable').children('span.add_span').show()
   }else {
-    $('.dialogError').show().children('p').text(errorArray.join('、')+'未填写完整')
+    // $('.dialogError').show().children('p').text(errorArray.join('、')+'未填写完整')
+		alert(errorArray.join('、')+'未填写完整')
   }
 }
 // 取消服务
@@ -340,7 +346,8 @@ function testContentVerb(obj) {
   if(ValueNull(obj) && $(obj).val().length>20) {
     return true
   }else {
-    $('.dialogError').show().children('p').text('服务内容描述长度必须为20-1000字')
+    // $('.dialogError').show().children('p').text('服务内容描述长度必须为20-1000字')
+		alert('服务内容描述长度必须为20-1000字')
     return false
   }
 }
@@ -374,7 +381,8 @@ function testRecruitPos(obj) {
   if(ValueNull(obj) && $(obj).val().length>20) {
     return true
   }else {
-    $('.dialogError').show().children('p').text('在招职位长度必须为20-300字')
+    // $('.dialogError').show().children('p').text('在招职位长度必须为20-300字')
+		alert('在招职位长度必须为20-300字')
     return false
   }
 }
@@ -408,7 +416,8 @@ function testWhyMe(obj) {
   if(ValueNull(obj) && $(obj).val().length>20) {
     return true
   }else {
-    $('.dialogError').show().children('p').text('在招职位长度必须为20-300字')
+    // $('.dialogError').show().children('p').text('在招职位长度必须为20-300字')
+		alert('在招职位长度必须为20-300字')
     return false
   }
 }
@@ -528,11 +537,13 @@ function submitVerify() {
 
 
       }else {
-        $('.dialogError').show().children('p').text('信息未填写完整')
+        // $('.dialogError').show().children('p').text('信息未填写完整')
+				alert('信息未填写完整')
       }
     })
   }else {
-    $('.dialogError').show().children('p').text('信息未填写或保存')
+    // $('.dialogError').show().children('p').text('信息未填写或保存')
+		alert('信息未填写或保存')
   }
 }
 //获取cookie

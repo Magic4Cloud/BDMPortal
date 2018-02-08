@@ -6,8 +6,16 @@ $('.form_safe_num').click(function () {
         dataType: "json",
         headers : {"Bdm-Timestamp":(new Date()).valueOf()},
         success: function(data){
-            console.log(data);
-        }
+					if(data.code == 200){
+						//发送成功
+						alert('发送成功');
+					}else {
+						alert(data.msg);
+					}
+        },
+			error: function (err) {
+				alert(err)
+			}
     });
 });
 $('.login').click(function () {
@@ -18,15 +26,17 @@ $('.login').click(function () {
         dataType: "json",
         headers : {"Bdm-Timestamp":(new Date()).valueOf()},
         success: function(data){
-            if(data.code == 400)
-            {
-                alert(data.msg);
-            }
-            console.log(data.data.token);
-            //token存入cookie
-            writeCookie('token',data.data.token,24);
-            $('.logindiv').hide();
-        }
+        	if(data.code == 200){
+						//token存入cookie
+						writeCookie('token',data.data.token,24);
+						$('.logindiv').hide();
+					}else {
+						alert(data.msg);
+					}
+        },
+				error: function (err) {
+        	alert(err)
+				}
     });
 });
 
