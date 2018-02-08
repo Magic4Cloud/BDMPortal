@@ -291,10 +291,10 @@ function saveService(obj) {
   if(errorArray.length == 0){
     //操作保存
     seviceContentArray[currentIndex] = seviceContentArray[currentIndex] ? seviceContentArray[currentIndex] : {}
-    seviceContentArray[currentIndex].name = parentDiv.find('span.active').data('value')
+    seviceContentArray[currentIndex].type_id = parentDiv.find('span.active').data('value')
     seviceContentArray[currentIndex].count = num
-    seviceContentArray[currentIndex].price = parentDiv.find('input.service_price').val()
-    seviceContentArray[currentIndex].date = parentDiv.find('input.service_date').val()
+    seviceContentArray[currentIndex].service_price = parentDiv.find('input.service_price').val()
+    seviceContentArray[currentIndex].service_time = parentDiv.find('input.service_date').val()
     parentDiv.find('div.sevice_onon').html(
     '<div class="sevice_on">'+
     '<span>'+contentArray[parentDiv.find('span.active').data('value')]+'/'+num+'</span>'+
@@ -344,7 +344,7 @@ function saveContentVerb(obj) {
   var content = parentDiv.find('.contentTextarea').val()
   if(testContentVerb($(obj).parent().siblings('textarea')[0])){
     seviceContentArray[currentIndex] = seviceContentArray[currentIndex] ? seviceContentArray[currentIndex] : {}
-    seviceContentArray[currentIndex].contentTextarea = content
+    seviceContentArray[currentIndex].content = content
     $(obj).parent('div').parent('div.addWork').siblings('div.add_content').html('<p class="work_intro ml20 mt30">'+content+'</p>')
     $(obj).parent('div').parent('div.addWork').hide().siblings('span.add_span').show()
   }
@@ -378,7 +378,7 @@ function saveRecruitPos(obj) {
   var content = parentDiv.find('.positionTextarea').val()
   if(testRecruitPos($(obj).parent().siblings('textarea')[0])){
     seviceContentArray[currentIndex] = seviceContentArray[currentIndex] ? seviceContentArray[currentIndex] : {}
-    seviceContentArray[currentIndex].positionTextarea = content
+    seviceContentArray[currentIndex].position = content
     $(obj).parent('div').parent('div.addWork').siblings('div.add_content').html('<p class="work_intro ml20 mt30">'+content+'</p>')
     $(obj).parent('div').parent('div.addWork').hide().siblings('span.add_span').show()
   }
@@ -412,7 +412,7 @@ function saveWhyMe(obj) {
   var content = parentDiv.find('.whyMeTextarea').val()
   if(testWhyMe($(obj).parent().siblings('textarea')[0])){
     seviceContentArray[currentIndex] = seviceContentArray[currentIndex] ? seviceContentArray[currentIndex] : {}
-    seviceContentArray[currentIndex].whyMeTextarea = content
+    seviceContentArray[currentIndex].advantage	 = content
     $(obj).parent('div').parent('div.addWork').siblings('div.add_content').html('<p class="work_intro ml20 mt30">'+content+'</p>')
     $(obj).parent('div').parent('div.addWork').hide().siblings('span.add_span').show()
   }
@@ -437,7 +437,7 @@ function saveAddRemark(obj) {
   var currentIndex = $('#add_service_div>form>div.add_service_form_div').index(parentDiv)
   var content = parentDiv.find('.addRemarkTextarea').val()
   seviceContentArray[currentIndex] = seviceContentArray[currentIndex] ? seviceContentArray[currentIndex] : {}
-  seviceContentArray[currentIndex].addRemarkTextarea = content
+  seviceContentArray[currentIndex].supplement	 = content
   $(obj).parent('div').parent('div.addWork').siblings('div.add_content').html('<p class="work_intro ml20 mt30">'+content+'</p>')
   $(obj).parent('div').parent('div.addWork').hide().siblings('span.add_span').show()
 }
@@ -467,12 +467,13 @@ function prevStep() {
 function submitVerify() {
   var errorArray = []
   if(seviceContentArray.length != 0){
+      console.log(seviceContentArray)
     seviceContentArray.map(function (item) {
-      if(item.contentTextarea&&item.positionTextarea&&item.name&&item.whyMeTextarea&&checkstatus2){
+      if(item.content&&item.position&&item.type_id&&item.advantage&&checkstatus2){
         //提交操作,职业认证资料
           $.ajax({
               type: "POST",
-              url: 'http://api.bdm.qa.cloud4magic.com/mobile/user/addProfessionInfo',
+              url: 'http://bdm.me/mobile/user/addProfessionInfo',
               headers : {"Bdm-Timestamp":(new Date()).valueOf(),"Bdm-Token":getCookie('token')},
               data: {
                   "avatar" : '2018/02/06/15178903985a792b5ed185f.jpeg',
@@ -490,22 +491,15 @@ function submitVerify() {
                 //成功后,添加服务内容
                   $.ajax({
                       type: "POST",
-                      url: 'http://api.bdm.qa.cloud4magic.com/mobile/service/create',
+                      url: 'http://bdm.me/mobile/service/create',
                       headers : {"Bdm-Timestamp":(new Date()).valueOf(),"Bdm-Token":getCookie('token')},
                       data: {
-                          "he_id" : '2018/02/06/15178903985a792b5ed185f.jpeg',
-                          "services":  $('#atCity').text(),
-                          "type_id": JSON.stringify($('#id_select').selectpicker('val')),
-                          "service_price" : $('#atCompany').val(),
-                          "service_time" : $('#atPosition').val(),
-                          "work" :     JSON.stringify(workData),
-                          "education" : JSON.stringify(eduData),
-                          "intro" : myInformation,
-                          "file_keys" : JSON.stringify(file_keys)
+                          "he_id" : data.data.he_id,
+                          "services":  JSON.stringify(seviceContentArray)
                       },
                       dataType: "json",
-                      success: function(data){
-
+                      success: function(response){
+                        console.log(response)
 
                       }
                   });
