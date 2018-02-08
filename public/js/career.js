@@ -469,13 +469,12 @@ function submitVerify() {
   if(seviceContentArray.length != 0){
     seviceContentArray.map(function (item) {
       if(item.contentTextarea&&item.positionTextarea&&item.name&&item.whyMeTextarea&&checkstatus2){
-        //提交操作
+        //提交操作,职业认证资料
           $.ajax({
               type: "POST",
               url: 'http://api.bdm.qa.cloud4magic.com/mobile/user/addProfessionInfo',
               headers : {"Bdm-Timestamp":(new Date()).valueOf(),"Bdm-Token":getCookie('token')},
               data: {
-
                   "avatar" : '2018/02/06/15178903985a792b5ed185f.jpeg',
                   "code":  $('#atCity').text(),
                   "excel": JSON.stringify($('#id_select').selectpicker('val')),
@@ -485,14 +484,36 @@ function submitVerify() {
                   "education" : JSON.stringify(eduData),
                   "intro" : myInformation,
                   "file_keys" : JSON.stringify(file_keys)
-
               },
               dataType: "json",
               success: function(data){
-                
+                //成功后,添加服务内容
+                  $.ajax({
+                      type: "POST",
+                      url: 'http://api.bdm.qa.cloud4magic.com/mobile/service/create',
+                      headers : {"Bdm-Timestamp":(new Date()).valueOf(),"Bdm-Token":getCookie('token')},
+                      data: {
+                          "he_id" : '2018/02/06/15178903985a792b5ed185f.jpeg',
+                          "services":  $('#atCity').text(),
+                          "type_id": JSON.stringify($('#id_select').selectpicker('val')),
+                          "service_price" : $('#atCompany').val(),
+                          "service_time" : $('#atPosition').val(),
+                          "work" :     JSON.stringify(workData),
+                          "education" : JSON.stringify(eduData),
+                          "intro" : myInformation,
+                          "file_keys" : JSON.stringify(file_keys)
+                      },
+                      dataType: "json",
+                      success: function(data){
+
+
+                      }
+                  });
+
               }
           });
-        console.log('成功')
+
+
       }else {
         $('.dialogError').show().children('p').text('信息未填写完整')
       }
@@ -501,7 +522,7 @@ function submitVerify() {
     $('.dialogError').show().children('p').text('信息未填写或保存')
   }
 }
-
+//获取cookie
 function getCookie(name)
 {
     var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
