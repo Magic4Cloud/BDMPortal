@@ -19,6 +19,7 @@ $('.form_safe_num').click(function () {
     });
 });
 $('.login').click(function () {
+    var mobile = $('.form_phone').val();
     $.ajax({
         type: "POST",
         url: 'http://bdm.me/mobile/user/login',
@@ -29,7 +30,11 @@ $('.login').click(function () {
         	if(data.code == 200){
 						//token存入cookie
 						writeCookie('token',data.data.token,24);
-						$('.logindiv').hide();
+						writeCookie('nickname',mobile,24);
+						$('.dialogLogin').hide();
+						//隐藏登录按钮,显示用户昵称
+                        $('.loginbtn').hide();
+                        $('.nav_list').append('<li><a href="JavaScript:;">'+BDM+mobile.slice(7)+'</a></li>')
 					}else {
 						alert(data.msg);
 					}
@@ -50,4 +55,21 @@ function writeCookie (name, value, hours)
         expire = "; expires=" + expire.toGMTString ();
     }
     document.cookie = name + "=" + escape (value) + expire;
+}
+//获取cookie
+function getCookie(name)
+{
+    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+    if(arr=document.cookie.match(reg))
+        return unescape(arr[2]);
+    else
+        return null;
+}
+var token = getCookie('token');
+if(token)
+{
+    var nickname = getCookie('nickname');
+    //隐藏登录按钮,显示用户昵称
+    $('.loginbtn').hide();
+    $('.nav_list').append('<li>BDM'+nickname.slice(7)+'您好</li>')
 }

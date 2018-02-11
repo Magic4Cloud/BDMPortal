@@ -6,17 +6,7 @@
     <link href="../../../public/css/css.css" rel="stylesheet">
 </head>
 <body>
-    <div class="nav">
-        <div class="navbar">
-            <img class="nav_logo" src="../../../public/img/index_nav_logo@2x.png" alt="">
-            <ul class="nav_list">
-                <li><a class="active" href="<?php echo base_url('bdm/index')?>">首页</a></li>
-                <li><a href="<?php echo base_url('bdm/career')?>">成为职业顾问</a></li>
-                <li><a href="<?php echo base_url('bdm/faq')?>">FAQ</a></li>
-                <li><a href="javascript:void(0)" onclick="openLogin()">登录/注册</a></li>
-            </ul>
-        </div>
-    </div>
+   <?php require 'login_nav.html'?>
     <div class="banner">
         <div>
             <div>
@@ -124,47 +114,11 @@
             </div>
         </span>
     </div>
-    <div class="footer">
-        <div class="footer_top">
-            <img src="../../../public/img/index_fot_logo@2x.png" alt="">
-            <div>
-                <img src="../../../public/img/index_fot_phone@2x.png" alt="">
-                400-667-9596
-            </div>
-        </div>
-        <div class="footer_bottom">
-            <div>
-                <div>公司地址：北京市 朝阳区 望京soho T1-B-1807 室</div>
-                <div>商务合作：business@bdm.ai</div>
-                <div>市场合作：market@bdm.ai</div>
-                <div>人才招聘：hr@bdm.ai</div>
-            </div>
-            <div>
-                <img src="../../../public/img/index_fot_QR@2x.png" alt="">
-                <p>扫码关注公众号</p>
-            </div>
-        </div>
-    </div>
+
+   <?php require 'footer.html';?>
+
     <p>Copyright © 2018 , All Rights Reserved</p>
-    <div class="dialogLogin" onclick="closeLogin(this)">
-        <div class="logindiv">
-            <span>欢迎登录八斗猫</span>
-            <form action="">
-                <div>
-                    <img src="../../../public/img/index_icon_phone_normal@2x.png" alt="">
-                    <input class="form_phone" placeholder="请输入手机号" type="text">
-                    <span>+86</span>
-                </div>
-                <div>
-                    <img src="../../../public/img/index_icon_safe_normal@2x.png" alt="">
-                    <input class="form_safe" placeholder="请输入验证码" type="text">
-                    <div class="form_safe_num">发送验证码</div>
-                </div>
-                <span>请输入有效手机号</span>
-                <a href="javascript:void(0)" class="login">登录</a>
-            </form>
-        </div>
-    </div>
+   <?php require 'component.html';?>
 </body>
 <script type="text/javascript" src="../../../public/js/jquery.js"></script>
 <script type="text/javascript" src="../../../public/js/js.js"></script>

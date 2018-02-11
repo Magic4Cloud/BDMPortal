@@ -787,12 +787,12 @@ div.material_data lable button.blueCorrect{
 
 
 .material_div{
-   /* display: none;*/
+    display: none;
 }
 
 .add_service_div{
     padding-top: 72px;
-    display: none;
+    /*display: none;*/
 }
 
 div.material_data lable>span.correct{

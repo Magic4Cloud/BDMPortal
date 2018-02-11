@@ -1,0 +1,13 @@
+<div class="nav">
+    <div class="navbar">
+        <img class="nav_logo" src="../../../public/img/index_nav_logo@2x.png" alt="">
+        <ul class="nav_list">
+            <?php $array = [base_url('bdm/faq'),base_url('bdm/user'),base_url('bdm/headhunting'),base_url('bdm/protocol'),]; ?>
+            <li><a class="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] == base_url('bdm/index')?'active':'' ?>"  href="<?php echo base_url('bdm/index')?>">首页</a></li>
+            <!--<li><a class="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] == base_url('bdm/career')?'active':'' ?>" href="<?php echo base_url('bdm/career')?>">成为职业顾问</a></li>-->
+           <li><a class="<?php echo ( in_array( 'http://'. $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] ,$array) ) ? 'active' :'' ?>" href="<?php echo base_url('bdm/faq')?>">FAQ</a></li>
+            </li>
+            <!--<li><a href="javascript:void(0)" onclick="openLogin()" class="loginbtn">登录/注册</a></li>-->
+        </ul>
+    </div>
+</div>

@@ -25,6 +25,21 @@ class Bdm extends CI_Controller
         $this->load->view('html/faq.html');
     }
 
+    public function user()
+    {
+        $this->load->view('html/user.html');
+    }
+
+    public function headhunting()
+    {
+        $this->load->view('html/headhunting.html');
+    }
+
+    public function protocol()
+    {
+        $this->load->view('html/protocol.html');
+    }
+
     public function region()
     {
         $lists = $this->region->lists();
@@ -61,4 +76,5 @@ class Bdm extends CI_Controller
         ];
         echo json_encode($response);
     }
+
 }

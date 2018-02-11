@@ -52,6 +52,7 @@ div.navbar{
 .nav_list>li{
     display: inline-block;
     line-height: 70px;
+    font-size: 16px;
 }
 .nav_list>li:not(:last-child){
     margin-right: 75.3px;

@@ -10,17 +10,7 @@
     <link href="../../../public/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="nav">
-        <div class="navbar">
-            <img class="nav_logo" src="../../../public/img/index_nav_logo@2x.png" alt="">
-            <ul class="nav_list">
-                <li><a href="<?php echo base_url('bdm/index')?>">首页</a></li>
-                <li><a class="active" href="<?php echo base_url('bdm/career')?>">成为职业顾问</a></li>
-                <li><a href="<?php echo base_url('bdm/faq')?>">FAQ</a></li>
-                <li><a href="javascript:void(0)" onclick="openLogin()">登录/注册</a></li>
-            </ul>
-        </div>
-    </div>
+<?php require 'login_nav.html';?>
     <div class="career_material">
         <p>您的资料暂未提交</p>
         <div class="material_data">
@@ -376,25 +366,7 @@
         </div>
     </div>
     <p>Copyright © 2018 , All Rights Reserved</p>
-    <div class="dialogLogin" onclick="closeLogin(this)">
-        <div>
-            <span>欢迎登录八斗猫</span>
-            <form action="">
-                <div>
-                    <img src="../../../public/img/index_icon_phone_normal@2x.png" alt="">
-                    <input class="form_phone" placeholder="请输入手机号" type="text">
-                    <span>+86</span>
-                </div>
-                <div>
-                    <img src="../../../public/img/index_icon_safe_normal@2x.png" alt="">
-                    <input class="form_safe" placeholder="请输入验证码" type="text">
-                    <div class="form_safe_num">发送验证码</div>
-                </div>
-                <span>请输入有效手机号</span>
-                <a href="javascript:void(0)">登录</a>
-            </form>
-        </div>
-    </div>
+    <?php require 'component.html';?>
     <div class="dialogUpload" onclick="closeAvatar(this)">
         <div>
             <div class="avatar_upload">
@@ -446,6 +418,4 @@
 </script>
 <script type="text/javascript" src="../../../public/js/career.js"></script>
 <script type="text/javascript" src="../../../public/js/login.js"></script>
-<script type="text/javascript">
-</script>
 </html>
