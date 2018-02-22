@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
     'dsn'	   =>  '',
-    'hostname' => 'rm-2ze8g3m0i1543h1v9.mysql.rds.aliyuncs.com',
+    'hostname' => 'localhost',
     'username' => 'bdm',
     'password' => 'Badoumao2018',
-    'database' => 'backend',
+    'database' => 'bdm',
     'dbdriver' => 'mysqli',
     'dbprefix' => 'bdm_',
     'pconnect' => FALSE,
